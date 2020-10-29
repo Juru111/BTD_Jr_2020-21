@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField]
     private int popCountLeft = 1;
+    [SerializeField]
     private int power = 1;
     [SerializeField]
     private float movementSpeed = 5;
@@ -27,11 +29,13 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(this+ " spotkał " + collision.gameObject.name);
+        //Debug.Log(this+ " spotkał " + collision.gameObject.name);
 
-        //zamienić sprawdzanie layera na sprawdzenie czy ma component (klasę) "Bloon"
-        if(collision.gameObject.layer == 8)
+        //Sprawdzenie czy napotkany objekt jest balonem
+        Bloon bloonComponent = collision.GetComponent<Bloon>();
+        if (bloonComponent != null)
         {
+            //Debug.Log("Znaleziony komponent 'Bloon': " + bloonComponent);
             collision.GetComponent<Bloon>().LayerPop(power);
             popCountLeft--;
             if (popCountLeft <= 0)
