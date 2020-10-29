@@ -1,0 +1,37 @@
+fileFormatVersion: 2
+guid: ce0fc1ce0d5d20a438f3355dd734f653
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redBloonSprite: {fileID: 8150734595626237103, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - blueBloonSprite: {fileID: -5358034902724172028, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - greenBloonSprite: {fileID: -6490589200050625270, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - yellowBloonSprite: {fileID: 1573898455006849525, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - pinkBloonSprite: {fileID: 6643527531196919177, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - blackBloonSprite: {fileID: -7279024759597581219, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - whiteBloonSprite: {fileID: -3434226276743379375, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - purpleBloonSprite: {fileID: -2319917085202876999, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - leadBloonSprite: {fileID: -6462291485303525202, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - zebraBloonSprite: {fileID: -1326815393553478401, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - rainbowBloonSprite: {fileID: 1161784380684662174, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - ceramicBloonSprite: {fileID: 6789848952998735595, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  - MOABSprite: {fileID: 3829580037134290720, guid: fc1256878a8c9064f86f783757a6ceda,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
