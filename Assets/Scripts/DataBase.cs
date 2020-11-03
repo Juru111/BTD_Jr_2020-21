@@ -1,52 +1,52 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
-    public float redBloonSpeed = 1;
-    public Sprite redBloonSprite;
-    public float redBloonSize = 0.19f;
+    [field: SerializeField] public float redBloonSpeed { get; private set; } = 1;
+    [field: SerializeField] public Sprite redBloonSprite { get; private set; }
+    [field: SerializeField] public float redBloonSize { get; private set; } = 0.19f;
 
-    public float blueBloonSpeed = 1.4f;
-    public Sprite blueBloonSprite;
-    public float blueBloonSize = 0.2f;
+    [field: SerializeField] public float blueBloonSpeed { get; private set; } = 1.4f;
+    [field: SerializeField] public Sprite blueBloonSprite { get; private set; }
+    [field: SerializeField] public float blueBloonSize { get; private set; } = 0.2f;
 
-    public float greenBloonSpeed = 1.8f;
-    public Sprite greenBloonSprite;
-    public float greenBloonSize = 0.22f;
+    [field: SerializeField] public float greenBloonSpeed { get; private set; } = 1.8f;
+    [field: SerializeField] public Sprite greenBloonSprite { get; private set; }
+    [field: SerializeField] public float greenBloonSize { get; private set; } = 0.22f;
 
-    public float yellowBloonSpeed = 3.2f;
-    public Sprite yellowBloonSprite;
-    public float yellowBloonSize = 0.24f;
+    [field: SerializeField] public float yellowBloonSpeed { get; private set; } = 3.2f;
+    [field: SerializeField] public Sprite yellowBloonSprite { get; private set; }
+    [field: SerializeField] public float yellowBloonSize { get; private set; } = 0.24f;
 
-    public float pinkBloonSpeed = 3.5f;
-    public Sprite pinkBloonSprite;
-    public float pinkBloonSize = 0.28f;
+    [field: SerializeField] public float pinkBloonSpeed { get; private set; } = 3.5f;
+    [field: SerializeField]  public Sprite pinkBloonSprite { get; private set; }
+    [field: SerializeField] public float pinkBloonSize { get; private set; } = 0.28f;
 
-    public float blackBloonSpeed = 1.8f;
-    public Sprite blackBloonSprite;
+    [field: SerializeField] public float blackBloonSpeed { get; private set; } = 1.8f;
+    [field: SerializeField] public Sprite blackBloonSprite { get; private set; }
 
-    public float whiteBloonSpeed = 2;
-    public Sprite whiteBloonSprite;
+    [field: SerializeField] public float whiteBloonSpeed { get; private set; } = 2;
+    [field: SerializeField] public Sprite whiteBloonSprite { get; private set; }
 
-    public float purpleBloonSpeed = 3;
-    public Sprite purpleBloonSprite;
+    [field: SerializeField] public float purpleBloonSpeed { get; private set; } = 3;
+    [field: SerializeField] public Sprite purpleBloonSprite { get; private set; }
 
-    public float leadBloonSpeed = 1;
-    public Sprite leadBloonSprite;
+    [field: SerializeField] public float leadBloonSpeed { get; private set; } = 1;
+    [field: SerializeField] public Sprite leadBloonSprite { get; private set; }
 
-    public float zebraBloonSpeed = 1.8f;
-    public Sprite zebraBloonSprite;
+    [field: SerializeField] public float zebraBloonSpeed { get; private set; } = 1.8f;
+    [field: SerializeField]  public Sprite zebraBloonSprite { get; private set; }
 
-    public float ranibowBloonSpeed = 2.2f;
-    public Sprite rainbowBloonSprite;
+    [field: SerializeField] public float ranibowBloonSpeed { get; private set; } = 2.2f;
+    [field: SerializeField] public Sprite rainbowBloonSprite { get; private set; }
 
-    public float ceramicBloonSpeed = 2.5f;
-    public Sprite ceramicBloonSprite;
+    [field: SerializeField] public float ceramicBloonSpeed { get; private set; } = 2.5f;
+    [field: SerializeField] public Sprite ceramicBloonSprite { get; private set; }
 
-    public float MOABSpeed = 1;
-    public Sprite MOABSprite;
-
+    [field: SerializeField] public float MOABSpeed { get; private set; } = 1;
+    [field: SerializeField] public Sprite MOABSprite { get; private set; }
 }

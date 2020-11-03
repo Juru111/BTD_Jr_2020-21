@@ -29,13 +29,10 @@ public class Projectile : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log(this+ " spotkał " + collision.gameObject.name);
-
         //Sprawdzenie czy napotkany objekt jest balonem
         Bloon bloonComponent = collision.GetComponent<Bloon>();
         if (bloonComponent != null)
         {
-            //Debug.Log("Znaleziony komponent 'Bloon': " + bloonComponent);
             collision.GetComponent<Bloon>().LayerPop(power);
             popCountLeft--;
             if (popCountLeft <= 0)

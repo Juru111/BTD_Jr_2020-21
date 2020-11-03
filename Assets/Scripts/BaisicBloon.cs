@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class BaisicBloon : Bloon
 {
-    public CircleCollider2D myCircleCollider2D;
-    public SpriteRenderer mySpriteRenderer;
+    private CircleCollider2D myCircleCollider2D;
+    private SpriteRenderer mySpriteRenderer;
 
-    public override void Start()
+    protected override void Start()
     {
-        base.Start();
         myCircleCollider2D = GetComponent<CircleCollider2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-        //layersLeft = 5;
-        //Debug.Log(GameMenager.instance.bloonsData.yellowBloonSpeed);
+        base.Start();
     }
 
     public override void LayerPop(int power)
     {
         base.LayerPop(power);
+        //zmiana właśniwości po pop-nięciu
         if(layersLeft == 4)
         {
             mySpriteRenderer.sprite = GameBox.instance.bloonsData.yellowBloonSprite;

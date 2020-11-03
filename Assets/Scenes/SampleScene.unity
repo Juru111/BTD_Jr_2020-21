@@ -379,13 +379,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layersLeft: 5
-  isCammo: 0
-  isRegrow: 0
   movementSpeed: 3.5
   rotationAngle: 0
-  myRigidbody2D: {fileID: 0}
-  myCircleCollider2D: {fileID: 0}
-  mySpriteRenderer: {fileID: 0}
+  isCammo: 0
+  isRegrow: 0
 --- !u!4 &183428002
 Transform:
   m_ObjectHideFlags: 0
@@ -1145,13 +1142,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layersLeft: 5
-  isCammo: 0
-  isRegrow: 0
   movementSpeed: 3.5
   rotationAngle: 0
-  myRigidbody2D: {fileID: 0}
-  myCircleCollider2D: {fileID: 0}
-  mySpriteRenderer: {fileID: 0}
+  isCammo: 0
+  isRegrow: 0
 --- !u!50 &1744499320
 Rigidbody2D:
   serializedVersion: 4
