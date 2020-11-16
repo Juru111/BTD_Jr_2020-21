@@ -17,31 +17,30 @@ public class BaisicBloon : Bloon
     public override void LayerPop(int power)
     {
         base.LayerPop(power);
-        //zmiana właśniwości po pop-nięciu
-        if(layersLeft == 4)
-        {
-            mySpriteRenderer.sprite = GameBox.instance.bloonsData.yellowBloonSprite;
-            movementSpeed = GameBox.instance.bloonsData.yellowBloonSpeed;
-            myCircleCollider2D.radius = GameBox.instance.bloonsData.yellowBloonSize;
 
-        }
-        if(layersLeft == 3)
+        //zmiana właśniwości po pop-nięciu
+        switch(layersLeft)
         {
-            mySpriteRenderer.sprite = GameBox.instance.bloonsData.greenBloonSprite;
-            movementSpeed = GameBox.instance.bloonsData.greenBloonSpeed;
-            myCircleCollider2D.radius = GameBox.instance.bloonsData.greenBloonSize;
-        }
-        if (layersLeft == 2)
-        {
-            mySpriteRenderer.sprite = GameBox.instance.bloonsData.blueBloonSprite;
-            movementSpeed = GameBox.instance.bloonsData.blueBloonSpeed;
-            myCircleCollider2D.radius = GameBox.instance.bloonsData.blueBloonSize;
-        }
-        if (layersLeft == 1)
-        {
-            mySpriteRenderer.sprite = GameBox.instance.bloonsData.redBloonSprite;
-            movementSpeed = GameBox.instance.bloonsData.redBloonSpeed;
-            myCircleCollider2D.radius = GameBox.instance.bloonsData.redBloonSize;
+            case 4:
+                mySpriteRenderer.sprite = GameBox.instance.bloonsData.yellowBloonSprite;
+                movementSpeed = GameBox.instance.bloonsData.yellowBloonSpeed;
+                myCircleCollider2D.radius = GameBox.instance.bloonsData.yellowBloonSize;
+                break;
+            case 3:
+                mySpriteRenderer.sprite = GameBox.instance.bloonsData.greenBloonSprite;
+                movementSpeed = GameBox.instance.bloonsData.greenBloonSpeed;
+                myCircleCollider2D.radius = GameBox.instance.bloonsData.greenBloonSize;
+                break;
+            case 2:
+                mySpriteRenderer.sprite = GameBox.instance.bloonsData.blueBloonSprite;
+                movementSpeed = GameBox.instance.bloonsData.blueBloonSpeed;
+                myCircleCollider2D.radius = GameBox.instance.bloonsData.blueBloonSize;
+                break;
+            case 1:
+                mySpriteRenderer.sprite = GameBox.instance.bloonsData.redBloonSprite;
+                movementSpeed = GameBox.instance.bloonsData.redBloonSpeed;
+                myCircleCollider2D.radius = GameBox.instance.bloonsData.redBloonSize;
+                break;
         }
     }
 

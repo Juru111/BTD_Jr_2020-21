@@ -25,6 +25,13 @@ public class Bloon : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    // Update is called once per frame
+    protected virtual void Update()
+    {   
+        //Przerabianie kątów na wektory by wysłać tam bloona
+        myRigidbody2D.velocity = new Vector2(Mathf.Cos(rotationAngle * Mathf.Deg2Rad) * movementSpeed, Mathf.Sin(rotationAngle * Mathf.Deg2Rad) * movementSpeed);
+    }
+
     public virtual void LayerPop(int power)
     {
         layersLeft -= power;
@@ -33,12 +40,5 @@ public class Bloon : MonoBehaviour
             Debug.Log("Bloon died");
             gameObject.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    protected virtual void Update()
-    {   
-        //Przerabianie kątów na wektory by wysłać tam bloona
-        myRigidbody2D.velocity = new Vector2(Mathf.Cos(rotationAngle * Mathf.Deg2Rad) * movementSpeed, Mathf.Sin(rotationAngle * Mathf.Deg2Rad) * movementSpeed);
     }
 }
