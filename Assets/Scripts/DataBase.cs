@@ -6,9 +6,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
+    #region Dane Balonów
     [field: SerializeField] public float redBloonSpeed { get; private set; } = 1;
     [field: SerializeField] public Sprite redBloonSprite { get; private set; }
-    [field: SerializeField] public float redBloonSize { get; private set; } = 0.19f;
+    [field: SerializeField] public float redBloonSize { get; private set; } = 0.19f; 
 
     [field: SerializeField] public float blueBloonSpeed { get; private set; } = 1.4f;
     [field: SerializeField] public Sprite blueBloonSprite { get; private set; }
@@ -49,4 +50,9 @@ public class DataBase : ScriptableObject
 
     [field: SerializeField] public float MOABSpeed { get; private set; } = 1;
     [field: SerializeField] public Sprite MOABSprite { get; private set; }
+    #endregion
+
+    //#region Spis waypointów
+    //[field: SerializeField] public Transform[] waypoints { get; private set; } 
+    //#endregion
 }

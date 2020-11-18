@@ -6,8 +6,10 @@ public class GameBox : MonoBehaviour
 {
     public DataBase bloonsData;
     public static GameBox instance;
+    #region Spis waypointów
+    [field: SerializeField] public Transform[] waypoints { get; private set; }
+    #endregion
 
-    // Start is called before the first frame update
     private void Awake()
     {
         if(instance == null)
@@ -20,5 +22,4 @@ public class GameBox : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

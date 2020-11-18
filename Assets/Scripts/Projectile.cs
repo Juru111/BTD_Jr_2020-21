@@ -27,19 +27,24 @@ public class Projectile : MonoBehaviour
         spriteRotationAngle = Mathf.Atan2(myRigidbody2D.velocity.y, myRigidbody2D.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(spriteRotationAngle, Vector3.forward);
     }
+
+    private bool busyPoping = false;
     void OnTriggerEnter2D(Collider2D collision)
     {
-        //Sprawdzenie czy napotkany objekt jest balonem
-        Bloon bloonComponent = collision.GetComponent<Bloon>();
-        if (bloonComponent != null)
+        //Sprawdzenie czy napotkany objekt jest balonem oraz czy wtym momencie dart nie jest zajęty PoP-owaniem
+        if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false)
         {
-            collision.GetComponent<Bloon>().LayerPop(power);
+            busyPoping = true;
             popCountLeft--;
+            bloonComponent.LayerPop(power);
             if (popCountLeft <= 0)
             {
                 gameObject.SetActive(false);
+                return;
             }
+            busyPoping = false;
         }
+        
     }
 
     // Update is called once per frame
