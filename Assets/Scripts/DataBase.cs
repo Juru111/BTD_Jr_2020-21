@@ -51,8 +51,4 @@ public class DataBase : ScriptableObject
     [field: SerializeField] public float MOABSpeed { get; private set; } = 1;
     [field: SerializeField] public Sprite MOABSprite { get; private set; }
     #endregion
-
-    //#region Spis waypointów
-    //[field: SerializeField] public Transform[] waypoints { get; private set; } 
-    //#endregion
 }

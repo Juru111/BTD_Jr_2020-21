@@ -15,13 +15,10 @@ public class Bloon : MonoBehaviour
     protected bool isCammo;
     [SerializeField]
     protected bool isRegrow;
-    //[SerializeField]
-    //protected Transform[] waypoints;
     [SerializeField]
     protected int myNextWaypiont = 0;
     [SerializeField]
     protected float distanceToWaypoint;
-
     [SerializeField]
     protected GameObject popIcon;
 
@@ -71,11 +68,13 @@ public class Bloon : MonoBehaviour
     public virtual void LayerPop(int power)
     {
         layersLeft -= power;
-        Debug.Log("Balon " + this +" PoP-nięty z siłą " + power);
+        //Debug.Log("Balon " + this +" PoP-nięty z siłą " + power);
         StartCoroutine(ShowPoP());
+
+
         if (layersLeft <= 0)
         {
-            Debug.Log("Bloon " + this + "died");
+            //Debug.Log("Bloon " + this + "died");
             gameObject.SetActive(false);
         }
     }

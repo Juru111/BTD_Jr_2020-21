@@ -11,6 +11,10 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private float movementSpeed = 5;
     [SerializeField]
+    private float range = 10;
+    [SerializeField]
+    private float rangeLeft;
+    [SerializeField]
     private float rotationAngle;
     private float spriteRotationAngle;
     private Rigidbody2D myRigidbody2D;
@@ -19,6 +23,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+        rangeLeft = range;
 
         //Przerabianie kątów na wektory by wysłać tam darta
         myRigidbody2D.velocity = new Vector2(Mathf.Cos(rotationAngle * Mathf.Deg2Rad) * movementSpeed, Mathf.Sin(rotationAngle * Mathf.Deg2Rad) * movementSpeed);
@@ -35,6 +40,8 @@ public class Projectile : MonoBehaviour
         if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false)
         {
             busyPoping = true;
+
+            //PoP-owanie
             popCountLeft--;
             bloonComponent.LayerPop(power);
             if (popCountLeft <= 0)
@@ -50,6 +57,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        rangeLeft -= Time.deltaTime * movementSpeed;
+        if (rangeLeft < 0)
+        { gameObject.SetActive(false); }
     }
+
 }
