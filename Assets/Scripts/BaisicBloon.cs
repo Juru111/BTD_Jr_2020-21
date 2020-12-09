@@ -7,12 +7,12 @@ public class BaisicBloon : Bloon
     private CircleCollider2D myCircleCollider2D;
     private SpriteRenderer mySpriteRenderer;
 
-    protected override void Start()
-    {
-        myCircleCollider2D = GetComponent<CircleCollider2D>();
-        mySpriteRenderer = GetComponent<SpriteRenderer>();
-        base.Start();
-    }
+    //protected override void Start()
+    //{
+    //    myCircleCollider2D = GetComponent<CircleCollider2D>();
+    //    mySpriteRenderer = GetComponent<SpriteRenderer>();
+    //    base.Start();
+    //}
 
     public override void LayerPop(int power)
     {

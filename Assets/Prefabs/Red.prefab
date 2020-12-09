@@ -194,11 +194,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9395109142454344ba029d2df039f82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloonName: 1
   layersLeft: 1
-  movementSpeed: 1
-  rotationAngle: 0
   isCammo: 0
   isRegrow: 0
-  myNextWaypiont: 0
+  myNextWaypoint: 0
   distanceToWaypoint: 0
+  movementSpeed: 1
+  rotationAngle: 0
   popIcon: {fileID: 5468768491368829848}

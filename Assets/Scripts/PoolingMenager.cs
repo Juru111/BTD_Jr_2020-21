@@ -35,37 +35,54 @@ public class PoolingMenager : MonoBehaviour
                 bloon.SetActive(false);
                 bloonPool.Enqueue(bloon);
             }
-            Debug.Log("zapisyje taką kolejkę: " + type.name.ToString());
+            //Debug.Log("zapisyje taką kolejkę: " + type.name.ToString());
             bloonTypesDictionary.Add(type.name.ToString(), bloonPool);
         }
     }
 
-    public void SummonBloon(BloonTypes name, Vector3 position)
+    public void SummonBloon(BloonTypes bloonName, int layersLeft, Vector3 position,
+                            int myNextWaypoint, float distanceToWaypoint, bool isCammo, bool isRegrow)
     {
-        Debug.Log("próbuję zespawnować balon typu: " + name.ToString());
-        Debug.Log("Kolejka powyżsego balonu z Dictionary ma: " + bloonTypesDictionary[name.ToString()].Count);
-            if (bloonTypesDictionary[name.ToString()].Count > 0)
+        
+        if (bloonTypesDictionary[bloonName.ToString()].Count > 0)
+        {
+            GameObject bloonToSummon = bloonTypesDictionary[bloonName.ToString()].Dequeue();
+            bloonToSummon.SetActive(true);
+
+            if(bloonToSummon.TryGetComponent<Bloon>(out Bloon bloonComponent))
             {
-                GameObject bloonToSummon = bloonTypesDictionary[name.ToString()].Dequeue();
-                bloonToSummon.SetActive(true);
-                bloonToSummon.transform.position = position;
+                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow);
             }
-            else //jeśli jest za mało obiektów w pamięci
+            else
+            { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }
+                
+        }
+        else //jeśli jest za mało obiektów w pamięci
+        {
+            //tworzy jeden na aktualne potzrebę
+            GameObject bloonToSummon = Instantiate(bloonTypeInfos[(int)bloonName - 1].prefab, bloonsAnchor);
+
+            if (bloonToSummon.TryGetComponent<Bloon>(out Bloon bloonComponent))
             {
-                GameObject bloonToSummon = Instantiate(bloonTypeInfos[(int)name - 1].prefab, bloonsAnchor);
-                bloonToSummon.transform.position = position;
-                for (int i = 0; i < 30; i++)
-                {
-                    GameObject bloon = Instantiate(bloonTypeInfos[(int)name - 1].prefab, bloonsAnchor);
-                    bloon.SetActive(false);
-                    bloonTypesDictionary[name.ToString()].Enqueue(bloon);
-                }
+                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow);
+            }
+            else
+            { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }
+
+            //oraz dospawnowuje w Kolejkę zapas
+            for (int i = 0; i < 30; i++)
+            {
+                GameObject bloon = Instantiate(bloonTypeInfos[(int)bloonName - 1].prefab, bloonsAnchor);
+                bloon.SetActive(false);
+                bloonTypesDictionary[bloonName.ToString()].Enqueue(bloon);
+            }
         }
 
     }
 
-    public void ReturnBloon(GameObject bloon)
+    public void ReturnBloon(GameObject bloon, BloonTypes bloonName)
     {
-        //[metoda dla samo odkładania]
+        bloonTypesDictionary[bloonName.ToString()].Enqueue(bloon);
+        bloon.SetActive(false);
     }
 }
