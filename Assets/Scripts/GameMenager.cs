@@ -6,28 +6,33 @@ public class GameMenager : MonoBehaviour
 {
     private PoolingMenager poolingMenager;
     private Vector3 startPoint;
-    private float startDistanceToWaypoint;
     
 
     void Start()
     {
         poolingMenager = FindObjectOfType<PoolingMenager>();
         startPoint = GameBox.instance.waypoints[0].position;
-        startDistanceToWaypoint = Vector3.Distance(GameBox.instance.waypoints[0].transform.position, GameBox.instance.waypoints[1].transform.position);
-
-        StartCoroutine(ConstantSpawn());
+        
+        //robocze spawnowanie balonów
+        StartCoroutine(WIPSpawning());
         
     }
     void Update()
     {
         
     }
-    IEnumerator ConstantSpawn()
+    IEnumerator WIPSpawning()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 1; i < 6; i++)
         {
-            poolingMenager.SummonBloon(BloonTypes.Red, 3, startPoint, 1, startDistanceToWaypoint, false, false);
-            yield return new WaitForSeconds(0.5f);
+            for (int j = 0; j < 5; j++)
+            {
+                BloonTypes bloonType = (BloonTypes)i;
+                poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
+                yield return new WaitForSeconds(0.5f);
+            }
+            yield return new WaitForSeconds(3);
         }
+
     }
 }

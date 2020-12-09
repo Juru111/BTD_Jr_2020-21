@@ -5,25 +5,30 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField]
-    private int popCountLeft = 1;
+    protected ProjectileTypes projectileName;
     [SerializeField]
-    private int power = 1;
+    protected int popCountLeft = 1;
     [SerializeField]
-    private float movementSpeed = 5;
+    protected int power = 1;
     [SerializeField]
-    private float range = 10;
+    protected float movementSpeed = 5;
     [SerializeField]
-    private float rangeLeft;
+    protected float rotationAngle;
     [SerializeField]
-    private float rotationAngle;
-    private float spriteRotationAngle;
-    private Rigidbody2D myRigidbody2D;
+    protected float range = 10;
+    [SerializeField]
+    protected float rangeLeft;
+
+    protected float spriteRotationAngle;
+    protected Rigidbody2D myRigidbody2D;
+    protected PoolingMenager poolingMenager;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         rangeLeft = range;
+        poolingMenager = FindObjectOfType<PoolingMenager>();
 
         //Przerabianie kątów na wektory by wysłać tam darta
         myRigidbody2D.velocity = new Vector2(Mathf.Cos(rotationAngle * Mathf.Deg2Rad) * movementSpeed, Mathf.Sin(rotationAngle * Mathf.Deg2Rad) * movementSpeed);
@@ -33,29 +38,45 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(spriteRotationAngle, Vector3.forward);
     }
 
-    private bool busyPoping = false;
+    public virtual void SetMe(ProjectileTypes _projectileName, Vector3 _position, int _popCountLeft, int _power,
+                                        float _movementSpeed, float _rotationAngle, float _range)
+    {
+        projectileName = _projectileName;
+        transform.position = _position;
+        popCountLeft = _popCountLeft;
+        power = _power;
+        movementSpeed = _movementSpeed;
+        rotationAngle = _rotationAngle;
+        range = _range;
+    }
+
+    protected bool busyPoping = false;
     void OnTriggerEnter2D(Collider2D collision)
     {
         //Sprawdzenie czy napotkany objekt jest balonem oraz czy wtym momencie dart nie jest zajęty PoP-owaniem
-        if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false)
+        if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false && gameObject != bloonComponent.parentPopProjectle)
         {
             busyPoping = true;
-
-            //PoP-owanie
-            popCountLeft--;
-            bloonComponent.LayerPop(power);
-            if (popCountLeft <= 0)
-            {
-                gameObject.SetActive(false);
-                return;
-            }
+            ProjectileAction(bloonComponent);
             busyPoping = false;
         }
-        
+
+    }
+
+    //domyślne działąnie pocisku
+    protected void ProjectileAction(Bloon bloonComponent)
+    {
+        popCountLeft--;
+        bloonComponent.LayerPop(power, gameObject);
+        if (popCountLeft <= 0)
+        {
+            poolingMenager.ReturnProjectile(gameObject, projectileName);
+            return;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         rangeLeft -= Time.deltaTime * movementSpeed;
         if (rangeLeft < 0)

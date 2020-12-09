@@ -18,6 +18,7 @@ public class Bloon : MonoBehaviour
     protected int myNextWaypoint = 0;
     [SerializeField]
     protected float distanceToWaypoint;
+    public GameObject parentPopProjectle { get; protected set; } = null;
     #endregion
 
     [SerializeField]
@@ -72,8 +73,8 @@ public class Bloon : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, GameBox.instance.waypoints[myNextWaypoint].transform.position, movementSpeed * Time.deltaTime);
     }
 
-    public virtual void SetMe(BloonTypes _bloonName, int _layersLeft, Vector3 _position, 
-                                int _myNextWayPoint, float _distanceToWaypoint, bool _isCammo, bool _isRegrow)
+    public virtual void SetMe(BloonTypes _bloonName, int _layersLeft, Vector3 _position, int _myNextWayPoint,
+                                float _distanceToWaypoint, bool _isCammo, bool _isRegrow, GameObject _parentPopProjectle)
     {
         bloonName = _bloonName;
         layersLeft = _layersLeft;
@@ -82,14 +83,15 @@ public class Bloon : MonoBehaviour
         distanceToWaypoint = _distanceToWaypoint;
         isCammo = _isCammo;
         isRegrow = _isRegrow;
+        parentPopProjectle = _parentPopProjectle;
 
         if(layersLeft < (int)bloonName)
         {
-            LayerPop(0);
+            LayerPop(0, parentPopProjectle);
         }
     }
 
-    public virtual void LayerPop(int power)
+    public virtual void LayerPop(int power, GameObject parentPopProjectle)
     {
         layersLeft -= power;
         StartCoroutine(ShowPoP());
@@ -97,8 +99,8 @@ public class Bloon : MonoBehaviour
         if(bloonName != BloonTypes.Red)
         {
             BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-            Debug.Log("mam z summonować: " + newBloonName);
-            poolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow);
+            Debug.Log("summon-uję: " + newBloonName);
+            poolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
         }
         else
         { Debug.Log("Zabito Red-a"); }
