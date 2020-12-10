@@ -20,15 +20,23 @@ public class Projectile : MonoBehaviour
     protected float rangeLeft;
 
     protected float spriteRotationAngle;
+    [SerializeField]
     protected Rigidbody2D myRigidbody2D;
-    protected PoolingMenager poolingMenager;
 
-    // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Awake()
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    protected virtual void Start()
+    {
+        CalculateProjectileData();
+    }
+
+    protected virtual void CalculateProjectileData()
+    {
         rangeLeft = range;
-        poolingMenager = FindObjectOfType<PoolingMenager>();
 
         //Przerabianie kątów na wektory by wysłać tam darta
         myRigidbody2D.velocity = new Vector2(Mathf.Cos(rotationAngle * Mathf.Deg2Rad) * movementSpeed, Mathf.Sin(rotationAngle * Mathf.Deg2Rad) * movementSpeed);
@@ -48,39 +56,40 @@ public class Projectile : MonoBehaviour
         movementSpeed = _movementSpeed;
         rotationAngle = _rotationAngle;
         range = _range;
+
+        CalculateProjectileData();
     }
 
     protected bool busyPoping = false;
-    void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        //Sprawdzenie czy napotkany objekt jest balonem oraz czy wtym momencie dart nie jest zajęty PoP-owaniem
         if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false && gameObject != bloonComponent.parentPopProjectle)
         {
             busyPoping = true;
             ProjectileAction(bloonComponent);
             busyPoping = false;
         }
-
     }
 
     //domyślne działąnie pocisku
-    protected void ProjectileAction(Bloon bloonComponent)
+    protected virtual void ProjectileAction(Bloon bloonComponent)
     {
         popCountLeft--;
         bloonComponent.LayerPop(power, gameObject);
         if (popCountLeft <= 0)
         {
-            poolingMenager.ReturnProjectile(gameObject, projectileName);
-            return;
+            GameBox.instance.PoolingMenager.ReturnProjectile(gameObject, projectileName);
         }
     }
 
     // Update is called once per frame
-    protected void Update()
+    protected virtual void Update()
     {
         rangeLeft -= Time.deltaTime * movementSpeed;
-        if (rangeLeft < 0)
-        { gameObject.SetActive(false); }
+        if (rangeLeft <= 0)
+        {
+            GameBox.instance.PoolingMenager.ReturnProjectile(gameObject, projectileName);
+        }
     }
 
 }

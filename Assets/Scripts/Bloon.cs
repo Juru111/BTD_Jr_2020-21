@@ -14,10 +14,10 @@ public class Bloon : MonoBehaviour
     protected bool isCammo;
     [SerializeField]
     protected bool isRegrow;
-    [SerializeField]
-    protected int myNextWaypoint = 0;
-    [SerializeField]
-    protected float distanceToWaypoint;
+    [field: SerializeField]
+    public int myNextWaypoint { get; protected set; } = 0;
+    [field: SerializeField]
+    public float distanceToWaypoint { get; protected set; }
     public GameObject parentPopProjectle { get; protected set; } = null;
     #endregion
 
@@ -28,19 +28,11 @@ public class Bloon : MonoBehaviour
     [SerializeField]
     protected GameObject popIcon;
 
-    protected PoolingMenager poolingMenager;
-
-    // Start is called before the first frame update
     protected virtual void Start()
     {
-        poolingMenager = FindObjectOfType<PoolingMenager>();
-        //transform.position = GameBox.instance.waypoints[0].transform.position;
-        //myNextWaypoint = 1;
-        //distanceToWaypoint = Vector3.Distance(transform.position, GameBox.instance.waypoints[myNextWaypoint].transform.position);
-        popIcon.SetActive(false);
+
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
         Move();
@@ -99,13 +91,10 @@ public class Bloon : MonoBehaviour
         if(bloonName != BloonTypes.Red)
         {
             BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-            Debug.Log("summon-uję: " + newBloonName);
-            poolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+            GameBox.instance.PoolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
         }
-        else
-        { Debug.Log("Zabito Red-a"); }
 
-        poolingMenager.ReturnBloon(gameObject, bloonName);
+        GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
     }
 
 

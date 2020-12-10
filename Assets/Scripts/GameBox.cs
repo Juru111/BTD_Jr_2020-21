@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameBox : MonoBehaviour
 {
     public DataBase bloonsData;
+    public PoolingMenager PoolingMenager;
     public static GameBox instance;
     #region Spis waypointów
     [field: SerializeField]
@@ -18,7 +19,10 @@ public class GameBox : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        //chyba lepiej tu niż w każdym poolowanym obiekcie
+        PoolingMenager = FindObjectOfType<PoolingMenager>();
+
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);

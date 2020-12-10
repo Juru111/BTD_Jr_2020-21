@@ -35,13 +35,14 @@ public class PoolingMenager : MonoBehaviour
     private Dictionary<string, Queue<GameObject>> projectileTypesDictionary;
 
 
-    // Start is called before the first frame update
     void Awake()
     {
         bloonTypesDictionary = new Dictionary<string, Queue<GameObject>>();
         projectileTypesDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        //Wypełnianie wszystkich pool-i początkową liczbą obiektów |najpierw bloony, potem projectilesy|
+        //Wypełnianie wszystkich pool-i początkową liczbą obiektów
+        //|najpierw bloony, potem projectilesy|
+
         //bloony
         foreach (BloonTypeInfo type in bloonTypeInfos)
         {
@@ -56,6 +57,7 @@ public class PoolingMenager : MonoBehaviour
 
             bloonTypesDictionary.Add(type.name.ToString(), bloonPool);
         }
+
         //projectilesy
         foreach (ProjectileTypeInfo type in projectileTypeInfos)
         {
@@ -112,9 +114,9 @@ public class PoolingMenager : MonoBehaviour
 
     }
 
-    public void SummonProjectile(ProjectileTypes projectileName, Vector3 position, int popCountLeft, int power, float movementSpeed, float rotationnAngle, float range)
+    public void SummonProjectile(ProjectileTypes projectileName, Vector3 position, int pierce, int power, float movementSpeed, float rotationnAngle, float range)
     {
-
+        //jeśli w jest dostępny taki projectile to go summonuje
         if (projectileTypesDictionary[projectileName.ToString()].Count > 0)
         {
             GameObject projectileToSummon = projectileTypesDictionary[projectileName.ToString()].Dequeue();
@@ -122,7 +124,7 @@ public class PoolingMenager : MonoBehaviour
 
             if (projectileToSummon.TryGetComponent<Projectile>(out Projectile projectileComponent))
             {
-                projectileComponent.SetMe(projectileName, position, popCountLeft, power, movementSpeed, rotationnAngle, range);
+                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range);
             }
             else
             { Debug.LogError(projectileToSummon + " nie posiada komponentu Projectile!"); }
@@ -142,7 +144,7 @@ public class PoolingMenager : MonoBehaviour
 
             if (projectileToSummon.TryGetComponent<Projectile>(out Projectile projectileComponent))
             {
-                projectileComponent.SetMe(projectileName, position, popCountLeft, power, movementSpeed, rotationnAngle, range);
+                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range);
             }
             else
             { Debug.LogError(projectileToSummon + " nie posiada komponentu Projectile!"); }
@@ -150,12 +152,14 @@ public class PoolingMenager : MonoBehaviour
 
     }
 
+    //tą metodę wywołuje sam obiekt który się odkłąda
     public void ReturnBloon(GameObject bloon, BloonTypes bloonName)
     {
         bloonTypesDictionary[bloonName.ToString()].Enqueue(bloon);
         bloon.SetActive(false);
     }
 
+    //tą metodę wywołuje sam obiekt który się odkłąda
     public void ReturnProjectile(GameObject projectile, ProjectileTypes projectileName)
     {
         projectileTypesDictionary[projectileName.ToString()].Enqueue(projectile);
