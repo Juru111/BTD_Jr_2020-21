@@ -18,6 +18,7 @@ public class Bloon : MonoBehaviour
     public int myNextWaypoint { get; protected set; } = 0;
     [field: SerializeField]
     public float distanceToWaypoint { get; protected set; }
+    [field: SerializeField]
     public GameObject parentPopProjectle { get; protected set; } = null;
     #endregion
 
@@ -77,7 +78,7 @@ public class Bloon : MonoBehaviour
         isRegrow = _isRegrow;
         parentPopProjectle = _parentPopProjectle;
 
-        if(layersLeft < (int)bloonName)
+        if(layersLeft < (int)bloonName % 100)
         {
             LayerPop(0, parentPopProjectle);
         }
@@ -92,6 +93,10 @@ public class Bloon : MonoBehaviour
         {
             BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
             GameBox.instance.PoolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+        }
+        else
+        {
+            Debug.Log("Red dead");
         }
 
         GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);

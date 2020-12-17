@@ -18,6 +18,7 @@ public class PoolingMenager : MonoBehaviour
     private List<BloonTypeInfo> bloonTypeInfos;
     [SerializeField]
     private Dictionary<string, Queue<GameObject>> bloonTypesDictionary;
+    private int bloonNrInList;
 
     //dla projectilesów
     [System.Serializable]
@@ -77,7 +78,6 @@ public class PoolingMenager : MonoBehaviour
     public void SummonBloon(BloonTypes bloonName, int layersLeft, Vector3 position ,int myNextWaypoint,
                             float distanceToWaypoint, bool isCammo, bool isRegrow, GameObject parentPopProjectle)
     {
-        
         if (bloonTypesDictionary[bloonName.ToString()].Count > 0)
         {
             GameObject bloonToSummon = bloonTypesDictionary[bloonName.ToString()].Dequeue();
@@ -96,7 +96,15 @@ public class PoolingMenager : MonoBehaviour
             //dospawnowuje w Kolejkę zapas
             for (int i = 0; i < 30; i++)
             {
-                GameObject bloon = Instantiate(bloonTypeInfos[(int)bloonName - 1].prefab, bloonsAnchor);
+                if(bloonName == BloonTypes.White)
+                { bloonNrInList = 10; }
+                else if(bloonName == BloonTypes.Lead)
+                { bloonNrInList = 11; }
+                else
+                { bloonNrInList = (int)bloonName - 1; }
+
+
+                GameObject bloon = Instantiate(bloonTypeInfos[bloonNrInList].prefab, bloonsAnchor);
                 bloon.SetActive(false);
                 bloonTypesDictionary[bloonName.ToString()].Enqueue(bloon);
             }

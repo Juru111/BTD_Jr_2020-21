@@ -60,14 +60,11 @@ public class Projectile : MonoBehaviour
         CalculateProjectileData();
     }
 
-    protected bool busyPoping = false;
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Bloon bloonComponent) && busyPoping == false && gameObject != bloonComponent.parentPopProjectle)
+        if (collision.TryGetComponent(out Bloon bloonComponent) && gameObject != bloonComponent.parentPopProjectle && popCountLeft > 0)
         {
-            busyPoping = true;
             ProjectileAction(bloonComponent);
-            busyPoping = false;
         }
     }
 

@@ -62,18 +62,15 @@ public class Tower : MonoBehaviour
     //Przeszukiwanie wszystkich balonów w zasięgu oraz stierdzenie, który jest najbliższy końca
     protected virtual IEnumerator TowerSearch()
     {
-        Debug.Log(gameObject + "In Search Corutine");
         int biggestNextWaypoint = -1;
         float leastDistanceToWaypoint = 999999;
         while (bloonInRange)
         {
-            Debug.Log(gameObject + "In whine in Search Corutine");
             Collider2D[] bloonColliders = Physics2D.OverlapCircleAll(transform.position, range, BloonsMask, 0, 0);
             foreach (var bloonCollider in bloonColliders)
             {
-                //!!! Optymalizuj, ale jak??
-                bloonCollider.gameObject.TryGetComponent(out Bloon bloonObject);
-                if (bloonObject)
+                //!!! Optymalizuj, ale jak?? : włąsny Collider2D, który zapisuje odrazy kalsy Bloon
+                if (bloonCollider.gameObject.TryGetComponent(out Bloon bloonObject))
                 {
                     if(bloonObject.myNextWaypoint > biggestNextWaypoint)
                     {
@@ -102,8 +99,15 @@ public class Tower : MonoBehaviour
     //atak wierzy wraz z przeliczeniem gdzie wysłać projectile oraz z cooldownem
     protected virtual IEnumerator TowerAttack()
     {
-        float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * 180 / Mathf.PI;
-        GameBox.instance.PoolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
+        if (target != null)
+        {
+            float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * 180 / Mathf.PI;
+            GameBox.instance.PoolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
+        }
+        else
+        {
+            Debug.LogWarning("target is emppty");
+        }
         yield return new WaitForSeconds(attackSpeed);
         isAttackCorutine = false;
     }

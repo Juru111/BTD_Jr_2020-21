@@ -178,7 +178,7 @@ TextureImporter:
         serializedVersion: 2
         x: 528
         y: 74
-        width: 103
+        width: 102
         height: 199
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -197,9 +197,9 @@ TextureImporter:
       name: lead_bloon
       rect:
         serializedVersion: 2
-        x: 1121
+        x: 1122
         y: 263
-        width: 52
+        width: 51
         height: 71
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -218,7 +218,7 @@ TextureImporter:
       name: black_bloon
       rect:
         serializedVersion: 2
-        x: 1237
+        x: 1235
         y: 225
         width: 50
         height: 65
@@ -283,7 +283,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1124
         y: 160
-        width: 51
+        width: 49
         height: 68
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

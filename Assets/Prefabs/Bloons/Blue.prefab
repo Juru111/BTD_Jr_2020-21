@@ -179,9 +179,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.23
 --- !u!114 &4846723410146425087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,8 +198,8 @@ MonoBehaviour:
   layersLeft: 2
   isCammo: 0
   isRegrow: 0
-  myNextWaypoint: 0
-  distanceToWaypoint: 0
+  <myNextWaypoint>k__BackingField: 0
+  <distanceToWaypoint>k__BackingField: 0
   movementSpeed: 1.4
   rotationAngle: 0
   popIcon: {fileID: 3084453853839608342}
