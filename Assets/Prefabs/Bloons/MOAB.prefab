@@ -91,9 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3084453853919457815}
   - component: {fileID: 3084453853919457801}
-  - component: {fileID: 6139864640499249481}
   - component: {fileID: 635611029004573893}
-  - component: {fileID: 4605044544127508797}
+  - component: {fileID: 6139864640499249481}
   m_Layer: 8
   m_Name: MOAB
   m_TagString: Untagged
@@ -167,28 +166,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6139864640499249481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3084453853919457803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c66886315bde594ab6cf683c5261271, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloonName: 0
-  layersLeft: 1
-  isCammo: 0
-  isRegrow: 0
-  <myNextWaypoint>k__BackingField: 0
-  <distanceToWaypoint>k__BackingField: 0
-  movementSpeed: 3.5
-  rotationAngle: 0
-  popIcon: {fileID: 0}
-  spacing: 0.2
 --- !u!60 &635611029004573893
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -237,7 +214,7 @@ PolygonCollider2D:
       - {x: 0.069856234, y: -0.84176296}
       - {x: 0.09503596, y: -0.81982017}
       - {x: 0.37098604, y: -0.81162035}
---- !u!114 &4605044544127508797
+--- !u!114 &6139864640499249481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,7 +232,7 @@ MonoBehaviour:
   isRegrow: 0
   <myNextWaypoint>k__BackingField: 0
   <distanceToWaypoint>k__BackingField: 0
+  <parentPopProjectle>k__BackingField: {fileID: 0}
   movementSpeed: 1
-  rotationAngle: 0
   popIcon: {fileID: 3084453853839608342}
-  spacing: 0.1
+  spacing: 0.2

@@ -10,10 +10,10 @@ public class GameMenager : MonoBehaviour
     void Start()
     {
         startPoint = GameBox.instance.waypoints[0].position;
-        
+
         //robocze spawnowanie balonów
         //StartCoroutine(WIPSpawning());
-        
+        GameBox.instance.PoolingMenager.SummonBloon(BloonTypes.MOAB, 10, startPoint, 0, 0, false, false, null);
     }
     void Update()
     {

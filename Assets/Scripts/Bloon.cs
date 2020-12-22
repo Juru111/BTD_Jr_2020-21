@@ -25,8 +25,6 @@ public class Bloon : MonoBehaviour
     [SerializeField]
     protected float movementSpeed = 3.5f;
     [SerializeField]
-    protected float rotationAngle;
-    [SerializeField]
     protected GameObject popIcon;
 
     protected virtual void Start()
@@ -49,7 +47,7 @@ public class Bloon : MonoBehaviour
             myNextWaypoint++;
             if(myNextWaypoint <= GameBox.instance.waypoints.Length-1)
             {
-                distanceToWaypoint = Vector3.Distance(transform.position, GameBox.instance.waypoints[myNextWaypoint].transform.position);
+                ChangeWaypoint();
             }
             else
             {
@@ -64,6 +62,11 @@ public class Bloon : MonoBehaviour
 
         //Zmiana pozycji - ruch właściwy
         transform.position = Vector2.MoveTowards(transform.position, GameBox.instance.waypoints[myNextWaypoint].transform.position, movementSpeed * Time.deltaTime);
+    }
+
+    protected virtual void ChangeWaypoint()
+    {
+        distanceToWaypoint = Vector3.Distance(transform.position, GameBox.instance.waypoints[myNextWaypoint].transform.position);
     }
 
     public virtual void SetMe(BloonTypes _bloonName, int _layersLeft, Vector3 _position, int _myNextWayPoint,

@@ -26,4 +26,14 @@ public class MOAB : Bloon
             base.LayerPop(power, parentPopProjectle);
         }
     }
+
+    protected override void ChangeWaypoint()
+    {
+        base.ChangeWaypoint();
+        Vector3 moveDirection = GameBox.instance.waypoints[myNextWaypoint].position - transform.position;
+        float spriteRotationAngle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(spriteRotationAngle - 90, Vector3.forward);
+    }
+
+
 }
