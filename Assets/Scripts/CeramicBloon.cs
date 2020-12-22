@@ -5,16 +5,17 @@ using UnityEngine;
 public class CeramicBloon : DoubleBloon
 {
     private int healthPoints = 10;
-    public override void LayerPop(int power, GameObject parentPopProjectle)
+    public override void LayerPop(int power, GameObject _parentPopProjectle)
     {
         if (healthPoints > 1)
         {
             healthPoints -= 1;
+            parentPopProjectle = _parentPopProjectle;
         }
         else
         {
             Debug.Log("popnięto ceramic przy pozostałym życiu: " + healthPoints);
-            base.LayerPop(power, parentPopProjectle);
+            base.LayerPop(power, _parentPopProjectle);
         }
     }
 }
