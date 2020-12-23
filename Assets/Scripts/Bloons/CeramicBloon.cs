@@ -14,7 +14,6 @@ public class CeramicBloon : DoubleBloon
         }
         else
         {
-            Debug.Log("popnięto ceramic przy pozostałym życiu: " + healthPoints);
             base.LayerPop(power, _parentPopProjectle);
         }
     }

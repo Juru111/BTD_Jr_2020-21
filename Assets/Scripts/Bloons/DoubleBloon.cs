@@ -7,7 +7,6 @@ public class DoubleBloon : Bloon
     [SerializeField]
     protected float spacing = 0.1f;
 
-
     public override void LayerPop(int power, GameObject parentPopProjectle)
     {
         //obliczenia właściwości dodatkowego balona

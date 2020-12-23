@@ -6,6 +6,7 @@ public class GameBox : MonoBehaviour
 {
     public DataBase bloonsData;
     public PoolingMenager PoolingMenager;
+    public GameMenager GameMenager;
     public static GameBox instance;
     #region Spis waypointów
     [field: SerializeField]

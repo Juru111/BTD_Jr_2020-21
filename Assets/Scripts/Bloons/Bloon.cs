@@ -26,10 +26,14 @@ public class Bloon : MonoBehaviour
     protected float movementSpeed = 3.5f;
     [SerializeField]
     protected GameObject popIcon;
+    [SerializeField]
+    protected GameMenager gameMenaner;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
-
+        gameMenaner = FindObjectOfType<GameMenager>();
+        //GameBox.instance.GameMenager;
+        //które leprze? i dlaczego to drugie nie działa (w Starcie)
     }
 
     protected virtual void Update()
@@ -45,18 +49,33 @@ public class Bloon : MonoBehaviour
         if (distanceToWaypoint <= 0)
         {
             myNextWaypoint++;
-            if(myNextWaypoint <= GameBox.instance.waypoints.Length-1)
+            if(myNextWaypoint <= GameBox.instance.waypoints.Length - 1)
             {
                 ChangeWaypoint();
             }
             else
             {
-                //gameObject.SetActive(false);
-                //Desummon
-                //HP-=LayesrLeft
-                myNextWaypoint = 0;
-                distanceToWaypoint = Vector3.Distance(transform.position, GameBox.instance.waypoints[0].transform.position);
+                int hpToLose = 0;
+                switch(bloonName)
+                {
+                    case BloonTypes.Red: hpToLose = 1; break;
+                    case BloonTypes.Blue: hpToLose = 2; break;
+                    case BloonTypes.Green: hpToLose = 3; break;
+                    case BloonTypes.Yellow: hpToLose = 4; break;
+                    case BloonTypes.Pink: hpToLose = 5; break;
+                    case BloonTypes.Black: hpToLose = 11; break;
+                    case BloonTypes.White: hpToLose = 11; break;
+                    case BloonTypes.Lead: hpToLose = 23; break;
+                    case BloonTypes.Zebra: hpToLose = 23; break;
+                    case BloonTypes.Rainbow: hpToLose = 47; break;
+                    case BloonTypes.Ceramic: hpToLose = 104; break;
+                    case BloonTypes.MOAB: hpToLose = 616; break;
+                    default: Debug.LogError("Niepoprawny bloon uciekł!"); break;
+                }
+                gameMenaner.LoseHp(hpToLose);
 
+                GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
+                return;
             }
         }
 
@@ -102,6 +121,7 @@ public class Bloon : MonoBehaviour
             Debug.Log("Red dead");
         }
 
+        gameMenaner.changeMoneyBalance(1);
         GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
     }
 
