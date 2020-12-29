@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: ab76a0b71dcf96244bc3fe1d09517386
+guid: 81bf9f8b9f6926344978d745110900eb
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 2885191160666244416
-    second: woodUI1horizontal_0
-  - first:
-      213: 3237810791902073766
-    second: woodUI1horizontal_1
-  - first:
-      213: -4074144699710655017
-    second: woodUI1horizontal_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -93,70 +84,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: woodUI1horizontal_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 616
-        height: 161
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 045cb9003124a0820800000000000000
-      internalID: 2885191160666244416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: woodUI1horizontal_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 231
-        height: 615
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a3df35b2c30fec20800000000000000
-      internalID: 3237810791902073766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: woodUI1horizontal_2
-      rect:
-        serializedVersion: 2
-        x: 308
-        y: 0
-        width: 308
-        height: 161
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d5b43a3bfab577c0800000000000000
-      internalID: -4074144699710655017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []

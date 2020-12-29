@@ -87,4 +87,9 @@ public class GameMenager : MonoBehaviour
         }
 
     }
+
+    public void DebugLogging()
+    {
+        Debug.Log("Debug Logging from GameMenager");
+    }
 }
