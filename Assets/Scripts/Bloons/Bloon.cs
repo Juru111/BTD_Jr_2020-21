@@ -25,13 +25,11 @@ public class Bloon : MonoBehaviour
     [SerializeField]
     protected float movementSpeed = 3.5f;
     [SerializeField]
-    protected GameObject popIcon;
-    [SerializeField]
-    protected GameMenager gameMenaner;
+    protected UIMenager uiMenaner;
 
     protected virtual void Awake()
     {
-        gameMenaner = FindObjectOfType<GameMenager>();
+        uiMenaner = FindObjectOfType<UIMenager>();
         //GameBox.instance.GameMenager;
         //które leprze? i dlaczego to drugie nie działa (w Starcie)
     }
@@ -72,7 +70,7 @@ public class Bloon : MonoBehaviour
                     case BloonTypes.MOAB: hpToLose = 616; break;
                     default: Debug.LogError("Niepoprawny bloon uciekł!"); break;
                 }
-                gameMenaner.LoseHp(hpToLose);
+                uiMenaner.LoseHp(hpToLose);
 
                 GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
                 return;
@@ -109,7 +107,7 @@ public class Bloon : MonoBehaviour
     public virtual void LayerPop(int power, GameObject parentPopProjectle)
     {
         layersLeft -= power;
-        StartCoroutine(ShowPoP());
+        GameBox.instance.PoolingMenager.SummonPop(transform.position);
 
         if(bloonName != BloonTypes.Red)
         {
@@ -121,17 +119,10 @@ public class Bloon : MonoBehaviour
             Debug.Log("Red dead");
         }
 
-        gameMenaner.changeMoneyBalance(1);
+        uiMenaner.changeMoneyBalance(1);
         GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
     }
 
 
-    protected virtual IEnumerator ShowPoP()
-    {
-        popIcon.transform.Rotate(0f, 0f, Random.Range(0f, 360.0f));
-        popIcon.SetActive(true);
-        yield return new WaitForSeconds(0.11f);
-        popIcon.SetActive(false);
-    }
 
 }

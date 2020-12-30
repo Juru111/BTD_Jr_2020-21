@@ -35,6 +35,18 @@ public class PoolingMenager : MonoBehaviour
     [SerializeField]
     private Dictionary<string, Queue<GameObject>> projectileTypesDictionary;
 
+    //dla PoP ikonek
+    [System.Serializable]
+    public class PopIconInfo
+    {
+        public GameObject prefab;
+        public int startSize;
+    }
+    [SerializeField]
+    private PopIconInfo popIconInfo;
+    [SerializeField]
+    private Transform popIconsAnchor;
+    Queue<GameObject> popPool = new Queue<GameObject>();
 
     void Awake()
     {
@@ -73,6 +85,16 @@ public class PoolingMenager : MonoBehaviour
 
             projectileTypesDictionary.Add(type.name.ToString(), projectilePool);
         }
+
+        //Pop Icons
+        for (int i = 0; i < popIconInfo.startSize; i++)
+        {
+            GameObject popIcon = Instantiate(popIconInfo.prefab, projectilesAnchor);
+            popIcon.SetActive(false);
+            popPool.Enqueue(popIcon);
+        }
+
+        //projectileTypesDictionary.Add(type.name.ToString(), projectilePool);
     }
 
     public void SummonBloon(BloonTypes bloonName, int layersLeft, Vector3 position ,int myNextWaypoint,
@@ -160,17 +182,44 @@ public class PoolingMenager : MonoBehaviour
 
     }
 
-    //tą metodę wywołuje sam obiekt który się odkłąda
+    public void SummonPop(Vector3 _position)
+    {
+        if(popPool.Count > 0)
+        {
+            GameObject popIconToSummon = popPool.Dequeue();
+            popIconToSummon.SetActive(true);
+            popIconToSummon.transform.position = _position;
+        }
+        else
+        {
+            for (int i = 0; i < popIconInfo.startSize/2; i++)
+            {
+                GameObject popIcon = Instantiate(popIconInfo.prefab, projectilesAnchor);
+                popIcon.SetActive(false);
+                popPool.Enqueue(popIcon);
+            }
+
+            GameObject popIconToSummon = popPool.Dequeue();
+            popIconToSummon.SetActive(true);
+            popIconToSummon.transform.position = _position;
+        }
+    }
+
+    //te metody wywołuje sam obiekt który się odkłąda
     public void ReturnBloon(GameObject bloon, BloonTypes bloonName)
     {
         bloonTypesDictionary[bloonName.ToString()].Enqueue(bloon);
         bloon.SetActive(false);
     }
-
-    //tą metodę wywołuje sam obiekt który się odkłąda
     public void ReturnProjectile(GameObject projectile, ProjectileTypes projectileName)
     {
         projectileTypesDictionary[projectileName.ToString()].Enqueue(projectile);
         projectile.SetActive(false);
     }
+    public void ReturnPopIcon(GameObject popIcon)
+    {
+        popPool.Enqueue(popIcon);
+        popIcon.SetActive(false);
+    }
+
 }

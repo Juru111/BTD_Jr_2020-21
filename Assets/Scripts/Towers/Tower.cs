@@ -7,7 +7,11 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected float attackSpeed;
     [SerializeField]
+    protected float designRange;
     protected float range;
+    [SerializeField]
+    protected GameObject rangeIndicator;
+
     protected CircleCollider2D myCircleCollider2D;
     [SerializeField]
     protected ProjectileTypes projectileType;
@@ -31,7 +35,10 @@ public class Tower : MonoBehaviour
     {
         myCircleCollider2D = GetComponent<CircleCollider2D>();
         BloonsMask = LayerMask.GetMask("Bloons");
+        range = (float)(designRange * 0.0085);
         myCircleCollider2D.radius = range;
+        rangeIndicator.transform.localScale = new Vector3(designRange / 100, designRange / 100, 1);
+        target = gameObject;
     }
 
 
@@ -46,6 +53,11 @@ public class Tower : MonoBehaviour
         {
             StartCoroutine(TowerAttack());
             isAttackCorutine = true;
+        }
+        //Obracanie samej wierzy
+        if (bloonInRange)
+        {
+            transform.up = target.transform.position - transform.position;
         }
     }
 
@@ -66,10 +78,9 @@ public class Tower : MonoBehaviour
         float leastDistanceToWaypoint = 999999;
         while (bloonInRange)
         {
-            Collider2D[] bloonColliders = Physics2D.OverlapCircleAll(transform.position, range, BloonsMask, 0, 0);
-            foreach (var bloonCollider in bloonColliders)
+            foreach (Collider2D bloonCollider in Physics2D.OverlapCircleAll(transform.position, range, BloonsMask, 0, 0))
             {
-                //!!! Optymalizuj, ale jak?? : włąsny Collider2D, który zapisuje odrazy kalsy Bloon
+                //!!! Optymalizuj, ale jak?? : włąsny Collider2D, który zapisuje odrazu kalsy Bloon
                 if (bloonCollider.gameObject.TryGetComponent(out Bloon bloonObject))
                 {
                     if(bloonObject.myNextWaypoint > biggestNextWaypoint)
@@ -96,11 +107,12 @@ public class Tower : MonoBehaviour
         isSearchCorutine = false;
     }
 
-    //atak wierzy wraz z przeliczeniem gdzie wysłać projectile oraz z cooldownem
+    //atak wierzy wraz z przeliczeniem gdzie wysłać projectile oraz z cooldown-em
     protected virtual IEnumerator TowerAttack()
     {
         if (target != null)
         {
+            //kalkulacje oraz summon projectile-a
             float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * 180 / Mathf.PI;
             GameBox.instance.PoolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
         }
@@ -110,6 +122,11 @@ public class Tower : MonoBehaviour
         }
         yield return new WaitForSeconds(attackSpeed);
         isAttackCorutine = false;
+    }
+
+    public void OnLeftMouseButtonClicked()
+    {
+        Debug.Log(gameObject);
     }
 
 }

@@ -11,6 +11,7 @@ public class CeramicBloon : DoubleBloon
         {
             healthPoints -= 1;
             parentPopProjectle = _parentPopProjectle;
+            GameBox.instance.PoolingMenager.SummonPop(transform.position);
         }
         else
         {

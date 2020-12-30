@@ -13,6 +13,7 @@ public class MOAB : Bloon
         {
             healthPoints -= 1;
             parentPopProjectle = _parentPopProjectle;
+            GameBox.instance.PoolingMenager.SummonPop(transform.position);
         }
         else
         {
