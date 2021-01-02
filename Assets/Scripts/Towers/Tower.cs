@@ -35,9 +35,7 @@ public class Tower : MonoBehaviour
     {
         myCircleCollider2D = GetComponent<CircleCollider2D>();
         BloonsMask = LayerMask.GetMask("Bloons");
-        range = (float)(designRange * 0.0085);
-        myCircleCollider2D.radius = range;
-        rangeIndicator.transform.localScale = new Vector3(designRange / 100, designRange / 100, 1);
+        MultilpyRefreshRange(1);
         target = gameObject;
     }
 
@@ -63,12 +61,22 @@ public class Tower : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        //wartość ta jest nadpisywwana w OnTriggerStay gdyby balon był w zasięgu
         bloonInRange = false;
     }
 
     protected virtual void OnTriggerStay2D()
     {
+        //zmiana na false jest w FixedUpdate
         bloonInRange = true;
+    }
+
+    protected virtual void MultilpyRefreshRange(float muntiplication)
+    {
+        designRange *= muntiplication;
+        rangeIndicator.transform.localScale = new Vector3(designRange / 100, designRange / 100, 1);
+        range = (float)(designRange * 0.0085); //zmienna "range" jest przydatna w innych miejscach też - jest bardziej naturalna dla Unity
+        myCircleCollider2D.radius = range;
     }
 
     //Przeszukiwanie wszystkich balonów w zasięgu oraz stierdzenie, który jest najbliższy końca
@@ -122,11 +130,6 @@ public class Tower : MonoBehaviour
         }
         yield return new WaitForSeconds(attackSpeed);
         isAttackCorutine = false;
-    }
-
-    public void OnLeftMouseButtonClicked()
-    {
-        Debug.Log(gameObject);
     }
 
 }

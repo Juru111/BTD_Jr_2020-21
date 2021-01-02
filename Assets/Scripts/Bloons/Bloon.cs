@@ -116,7 +116,7 @@ public class Bloon : MonoBehaviour
         }
         else
         {
-            Debug.Log("Red dead");
+            //Debug.Log("Red dead");
         }
 
         uiMenaner.changeMoneyBalance(1);

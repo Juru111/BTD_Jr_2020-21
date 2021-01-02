@@ -8,7 +8,7 @@ public class ImputMenager : MonoBehaviour
     private Camera mainCamera;
     [SerializeField]
     private LayerMask clickableLayerMask;
-    private IClickable clicableObject;
+    private IClickable lastclicedObject;
 
     // Update is called once per frame
     private void Update()
@@ -21,12 +21,34 @@ public class ImputMenager : MonoBehaviour
 
     private void HandleLeftMouseButtonClicked()
     {
-        Debug.Log("Coś kliknięto");
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        //Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, distance: 100, layerMask: clickableLayerMask);
         if (hit.collider != null)
         {
-            Debug.Log(hit.collider.gameObject.name); //tu konntynuuj
+            //Debug.Log(hit.collider.gameObject.name, hit.collider.gameObject);
+            IClickable currentTarget = hit.collider.gameObject.GetComponent<IClickable>();
+            currentTarget?.OnSelected();
+            SetSelectedObject(currentTarget);
         }
+        else
+        {
+            SetSelectedObject(null);
+        }
+    }
+
+    private void SetSelectedObject(IClickable clicable)
+    {
+        lastclicedObject?.OnDeselect();
+
+        if(lastclicedObject != clicable)
+        {
+            lastclicedObject = clicable;
+        }
+        else
+        {
+            lastclicedObject = null;
+        }
+
+        lastclicedObject?.OnSelected();
     }
 }

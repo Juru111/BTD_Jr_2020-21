@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PopIcons
+    uniqueID: 2726181749
+    locked: 0
+  - name: Towers
+    uniqueID: 1357686193
+    locked: 0
+  - name: Canvas
+    uniqueID: 4144045503
+    locked: 0
