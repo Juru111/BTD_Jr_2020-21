@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 6a09a3592c52ef245b5b82f9aa24aa57
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7237789665797321578
+    second: Monkey Buccaneer_0
+  - first:
+      213: 6158376143421327172
+    second: Monkey Buccaneer_1
+  - first:
+      213: -1956614631071182392
+    second: Monkey Buccaneer_2
+  - first:
+      213: -7802341273129252912
+    second: Monkey Buccaneer_3
+  - first:
+      213: -1017072955503805628
+    second: Monkey Buccaneer_4
+  - first:
+      213: -3675479084115909946
+    second: Monkey Buccaneer_5
+  - first:
+      213: 5488011621138252173
+    second: Monkey Buccaneer_6
+  - first:
+      213: 5719092029956298610
+    second: Monkey Buccaneer_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Monkey Buccaneer_0
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 171
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a63b7d48a5bc17460800000000000000
+      internalID: 7237789665797321578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_1
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 171
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4474ed55972f67550800000000000000
+      internalID: 6158376143421327172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_2
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 142
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c19ba01c55b8d4e0800000000000000
+      internalID: -1956614631071182392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_3
+      rect:
+        serializedVersion: 2
+        x: 1075
+        y: 142
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d703ce53f388b390800000000000000
+      internalID: -7802341273129252912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_4
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 53
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bf9802981a2e1f0800000000000000
+      internalID: -1017072955503805628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 53
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2a4eb1f331efcc0800000000000000
+      internalID: -3675479084115909946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_6
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 53
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8149212e75592c40800000000000000
+      internalID: 5488011621138252173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Monkey Buccaneer_7
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 53
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 277105376eb4e5f40800000000000000
+      internalID: 5719092029956298610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

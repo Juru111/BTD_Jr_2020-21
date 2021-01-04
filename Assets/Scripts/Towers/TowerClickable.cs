@@ -7,7 +7,7 @@ public class TowerClickable : MonoBehaviour, IClickable
     [SerializeField]
     private GameObject rangeIndicator;
     [SerializeField]
-    private GameObject towerMechanics;
+    private Tower towerMechanics;
 
     private void Start()
     {
@@ -17,10 +17,12 @@ public class TowerClickable : MonoBehaviour, IClickable
     public void OnSelected()
     {
         rangeIndicator.SetActive(true);
+        GameBox.instance.uIMenager.SelectedOnUI(towerMechanics);
     }
 
     public void OnDeselect()
     {
         rangeIndicator.SetActive(false);
+        GameBox.instance.uIMenager.DeselectedOnUI();
     }
 }

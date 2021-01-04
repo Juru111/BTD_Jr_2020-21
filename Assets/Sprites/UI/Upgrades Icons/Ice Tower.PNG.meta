@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: ed9b07dd5e531404aa2c9d5d41d1e10b
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3502894008944053514
+    second: Ice Tower_0
+  - first:
+      213: -7151292945572604794
+    second: Ice Tower_1
+  - first:
+      213: 5507306520293105011
+    second: Ice Tower_2
+  - first:
+      213: -6141936866793051218
+    second: Ice Tower_3
+  - first:
+      213: -4699371127715528508
+    second: Ice Tower_4
+  - first:
+      213: 6504868523690394875
+    second: Ice Tower_5
+  - first:
+      213: 8499545798019766873
+    second: Ice Tower_6
+  - first:
+      213: 6134977346143798750
+    second: Ice Tower_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Ice Tower_0
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 170
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2bb0f3578336fc0800000000000000
+      internalID: -3502894008944053514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 170
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 684536684f081cc90800000000000000
+      internalID: -7151292945572604794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_2
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 170
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d534be912ed6c40800000000000000
+      internalID: 5507306520293105011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_3
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 170
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabace506f473caa0800000000000000
+      internalID: -6141936866793051218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 52
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c00ac09bda78ceb0800000000000000
+      internalID: -4699371127715528508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 52
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf48f21457fe54a50800000000000000
+      internalID: 6504868523690394875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_6
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 52
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ad12beed374f570800000000000000
+      internalID: 8499545798019766873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ice Tower_7
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 52
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed548fd4461d32550800000000000000
+      internalID: 6134977346143798750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

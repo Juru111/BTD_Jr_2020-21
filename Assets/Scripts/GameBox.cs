@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class GameBox : MonoBehaviour
 {
-    public DataBase bloonsData;
-    public PoolingMenager PoolingMenager;
-    public UIMenager GameMenager;
+    public DataBase dataBase;
+    public PoolingMenager poolingMenager;
+    public UIMenager uIMenager;
     public static GameBox instance;
-    #region Spis waypointów
+
+    //spis waypointów
     [field: SerializeField]
     public Transform[] waypoints { get; private set; }
-    #endregion
 
-    /*#region Zestaw prefabów
-    [field: SerializeField]
-    public GameObject[] bloonsPrefabs { get; private set; }
-    #endregion*/
+    
 
     private void Awake()
     {
         //chyba lepiej tu niż w każdym poolowanym obiekcie
-        PoolingMenager = FindObjectOfType<PoolingMenager>();
+        //poolingMenager = FindObjectOfType<PoolingMenager>();
 
         if (instance == null)
         {

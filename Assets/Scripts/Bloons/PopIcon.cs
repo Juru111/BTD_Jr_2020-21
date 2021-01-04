@@ -15,6 +15,6 @@ public class PopIcon : MonoBehaviour
     {
         transform.Rotate(0f, 0f, Random.Range(0f, 360.0f));
         yield return new WaitForSeconds(lifeTime);
-        GameBox.instance.PoolingMenager.ReturnPopIcon(gameObject);
+        GameBox.instance.poolingMenager.ReturnPopIcon(gameObject);
     }
 }

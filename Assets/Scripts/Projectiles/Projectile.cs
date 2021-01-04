@@ -75,7 +75,7 @@ public class Projectile : MonoBehaviour
         bloonComponent.LayerPop(power, gameObject);
         if (popCountLeft <= 0)
         {
-            GameBox.instance.PoolingMenager.ReturnProjectile(gameObject, projectileName);
+            GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
         }
     }
 
@@ -85,7 +85,7 @@ public class Projectile : MonoBehaviour
         rangeLeft -= Time.deltaTime * movementSpeed;
         if (rangeLeft <= 0)
         {
-            GameBox.instance.PoolingMenager.ReturnProjectile(gameObject, projectileName);
+            GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
         }
     }
 

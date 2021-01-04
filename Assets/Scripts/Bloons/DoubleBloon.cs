@@ -14,7 +14,7 @@ public class DoubleBloon : Bloon
         Vector3 backDirection = transform.position - GameBox.instance.waypoints[myNextWaypoint].position;
         Vector3 anotherBloonPosition = transform.position + spacing * backDirection.normalized;
         //summonowanie dodatkowego bloona
-        GameBox.instance.PoolingMenager.SummonBloon(newBloonName, layersLeft - 1, anotherBloonPosition, myNextWaypoint, distanceToWaypoint + spacing, isCammo, isRegrow, parentPopProjectle);
+        GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - 1, anotherBloonPosition, myNextWaypoint, distanceToWaypoint + spacing, isCammo, isRegrow, parentPopProjectle);
         
         base.LayerPop(power, parentPopProjectle);
     }

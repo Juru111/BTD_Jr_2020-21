@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
+    [field: SerializeField]
+    public TowerTypes towerName { private set; get; }
     [SerializeField]
     protected float attackSpeed;
     [SerializeField]
@@ -31,6 +33,13 @@ public class Tower : MonoBehaviour
     protected bool isAttackCorutine = false;
     LayerMask BloonsMask;
 
+    #region Uleprzenia
+    [field: SerializeField]
+    public int path1Lv { private set; get; } = 0;
+    [field: SerializeField]
+    public int path2Lv { private set; get; } = 0;
+    #endregion
+
     protected virtual void Start()
     {
         myCircleCollider2D = GetComponent<CircleCollider2D>();
@@ -52,7 +61,8 @@ public class Tower : MonoBehaviour
             StartCoroutine(TowerAttack());
             isAttackCorutine = true;
         }
-        //Obracanie samej wierzy
+
+        //Obracanie samej wierzy w kierunku targetowanego bloona
         if (bloonInRange)
         {
             transform.up = target.transform.position - transform.position;
@@ -122,7 +132,7 @@ public class Tower : MonoBehaviour
         {
             //kalkulacje oraz summon projectile-a
             float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * 180 / Mathf.PI;
-            GameBox.instance.PoolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
+            GameBox.instance.poolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
         }
         else
         {
@@ -132,4 +142,63 @@ public class Tower : MonoBehaviour
         isAttackCorutine = false;
     }
 
+    protected virtual void UpgradeMe(int path)
+    {
+        if(path == 1)
+        {
+            switch (path1Lv)
+            {
+                case 0:
+                    Path1toLv1();
+                    break;
+                case 1:
+                    Path1toLv2();
+                    break;
+                case 2:
+                    Path1toLv3();
+                    break;
+                case 3:
+                    Path1toLv4();
+                    break;
+                default:
+                    Debug.LogError("niepoprawny upgrade pathu 1", gameObject);
+                    break;
+            }
+        }
+        else if (path == 2)
+        {
+            switch (path2Lv)
+            {
+                case 0:
+                    Path2toLv1();
+                    break;
+                case 1:
+                    Path2toLv2();
+                    break;
+                case 2:
+                    Path2toLv3();
+                    break;
+                case 3:
+                    Path2toLv4();
+                    break;
+                default:
+                    Debug.LogError("niepoprawny upgrade pathu 2", gameObject);
+                    break;
+            }
+        }
+        else
+        { Debug.LogError("niepoprawny nr pathu", gameObject); }
+    }
+
+    //poniższe do nadpisywania w dziedziceniach
+    #region Upgrades Funcions
+    protected virtual void Path1toLv1() { Debug.Log("P1 to Lv1"); path1Lv++; }
+    protected virtual void Path1toLv2() { Debug.Log("P1 to Lv2"); path1Lv++; }
+    protected virtual void Path1toLv3() { Debug.Log("P1 to Lv3"); path1Lv++; }
+    protected virtual void Path1toLv4() { Debug.Log("P1 to Lv4"); path1Lv++; }
+    protected virtual void Path2toLv1() { Debug.Log("P2 to Lv1"); path2Lv++; }
+    protected virtual void Path2toLv2() { Debug.Log("P2 to Lv2"); path2Lv++; }
+    protected virtual void Path2toLv3() { Debug.Log("P2 to Lv3"); path2Lv++; }
+    protected virtual void Path2toLv4() { Debug.Log("P2 to Lv4"); path2Lv++; }
+    #endregion
 }

@@ -29,7 +29,7 @@ public class GameMenager : MonoBehaviour
             for (int j = 0; j < 5; j++)
             {
                 BloonTypes bloonType = (BloonTypes)i;
-                GameBox.instance.PoolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
+                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(3);
@@ -38,7 +38,7 @@ public class GameMenager : MonoBehaviour
         for (int i = 1; i < 100; i++)
         {
             BloonTypes bloonType = (BloonTypes)Random.Range(1, 10);
-            GameBox.instance.PoolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
+            GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
             yield return new WaitForSeconds(0.2f);
         }
 

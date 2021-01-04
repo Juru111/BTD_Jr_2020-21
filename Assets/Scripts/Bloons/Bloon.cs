@@ -72,7 +72,7 @@ public class Bloon : MonoBehaviour
                 }
                 uiMenaner.LoseHp(hpToLose);
 
-                GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
+                GameBox.instance.poolingMenager.ReturnBloon(gameObject, bloonName);
                 return;
             }
         }
@@ -107,20 +107,20 @@ public class Bloon : MonoBehaviour
     public virtual void LayerPop(int power, GameObject parentPopProjectle)
     {
         layersLeft -= power;
-        GameBox.instance.PoolingMenager.SummonPop(transform.position);
+        GameBox.instance.poolingMenager.SummonPop(transform.position);
 
         if(bloonName != BloonTypes.Red)
         {
             BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-            GameBox.instance.PoolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
         }
         else
         {
             //Debug.Log("Red dead");
         }
 
-        uiMenaner.changeMoneyBalance(1);
-        GameBox.instance.PoolingMenager.ReturnBloon(gameObject, bloonName);
+        uiMenaner.ChangeMoneyBalance(1);
+        GameBox.instance.poolingMenager.ReturnBloon(gameObject, bloonName);
     }
 
 

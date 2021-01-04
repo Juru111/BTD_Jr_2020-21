@@ -6,49 +6,93 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
-    #region Dane Balonów
-    [field: SerializeField] public float redBloonSpeed { get; private set; } = 1;
-    [field: SerializeField] public Sprite redBloonSprite { get; private set; }
-    [field: SerializeField] public float redBloonSize { get; private set; } = 0.19f; 
+    #region Sprite-y uleprzeń
 
-    [field: SerializeField] public float blueBloonSpeed { get; private set; } = 1.4f;
-    [field: SerializeField] public Sprite blueBloonSprite { get; private set; }
-    [field: SerializeField] public float blueBloonSize { get; private set; } = 0.2f;
+    public DartMonkey dartmonkey;
+    public TackShooter tackShooter;
+    public BombShooter bombShooter;
+    public IceTower iceTower;
+    public GlueMonkey glueMonkey;
+    public MonkeyBuccaneer monkeyBuccaneer;
 
-    [field: SerializeField] public float greenBloonSpeed { get; private set; } = 1.8f;
-    [field: SerializeField] public Sprite greenBloonSprite { get; private set; }
-    [field: SerializeField] public float greenBloonSize { get; private set; } = 0.22f;
+    [System.Serializable]
+    public class DartMonkey
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float yellowBloonSpeed { get; private set; } = 3.2f;
-    [field: SerializeField] public Sprite yellowBloonSprite { get; private set; }
-    [field: SerializeField] public float yellowBloonSize { get; private set; } = 0.24f;
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
+    [System.Serializable]
+    public class TackShooter
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float pinkBloonSpeed { get; private set; } = 3.5f;
-    [field: SerializeField]  public Sprite pinkBloonSprite { get; private set; }
-    [field: SerializeField] public float pinkBloonSize { get; private set; } = 0.28f;
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
+    [System.Serializable]
+    public class BombShooter
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float blackBloonSpeed { get; private set; } = 1.8f;
-    [field: SerializeField] public Sprite blackBloonSprite { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
+    [System.Serializable]
+    public class IceTower
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float whiteBloonSpeed { get; private set; } = 2;
-    [field: SerializeField] public Sprite whiteBloonSprite { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
+    [System.Serializable]
+    public class GlueMonkey
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float purpleBloonSpeed { get; private set; } = 3;
-    [field: SerializeField] public Sprite purpleBloonSprite { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
+    [System.Serializable]
+    public class MonkeyBuccaneer
+    {
+        [field: SerializeField] public Sprite Path1LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
 
-    [field: SerializeField] public float leadBloonSpeed { get; private set; } = 1;
-    [field: SerializeField] public Sprite leadBloonSprite { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
+        [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+    }
 
-    [field: SerializeField] public float zebraBloonSpeed { get; private set; } = 1.8f;
-    [field: SerializeField]  public Sprite zebraBloonSprite { get; private set; }
-
-    [field: SerializeField] public float ranibowBloonSpeed { get; private set; } = 2.2f;
-    [field: SerializeField] public Sprite rainbowBloonSprite { get; private set; }
-
-    [field: SerializeField] public float ceramicBloonSpeed { get; private set; } = 2.5f;
-    [field: SerializeField] public Sprite ceramicBloonSprite { get; private set; }
-
-    [field: SerializeField] public float MOABSpeed { get; private set; } = 1;
-    [field: SerializeField] public Sprite MOABSprite { get; private set; }
     #endregion
 }

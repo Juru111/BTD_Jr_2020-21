@@ -21,11 +21,9 @@ public class ImputMenager : MonoBehaviour
 
     private void HandleLeftMouseButtonClicked()
     {
-        //Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, distance: 100, layerMask: clickableLayerMask);
         if (hit.collider != null)
         {
-            //Debug.Log(hit.collider.gameObject.name, hit.collider.gameObject);
             IClickable currentTarget = hit.collider.gameObject.GetComponent<IClickable>();
             currentTarget?.OnSelected();
             SetSelectedObject(currentTarget);

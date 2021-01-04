@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 81bf9f8b9f6926344978d745110900eb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3106183571017983921
+    second: Glue Gunner_0
+  - first:
+      213: -4349525735254010432
+    second: Glue Gunner_1
+  - first:
+      213: -4731269113300702956
+    second: Glue Gunner_2
+  - first:
+      213: -793106234804586345
+    second: Glue Gunner_3
+  - first:
+      213: 5580008132404761469
+    second: Glue Gunner_4
+  - first:
+      213: 6556958432101290031
+    second: Glue Gunner_5
+  - first:
+      213: -6569258468633379869
+    second: Glue Gunner_6
+  - first:
+      213: 6743171899557821476
+    second: Glue Gunner_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Glue Gunner_0
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 166
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b76ea520816b1b20800000000000000
+      internalID: 3106183571017983921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_1
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 166
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c5d3c8736163a3c0800000000000000
+      internalID: -4349525735254010432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_2
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 166
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4192fec0fc7275eb0800000000000000
+      internalID: -4731269113300702956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_3
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 166
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798335dd4125ef4f0800000000000000
+      internalID: -793106234804586345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_4
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 48
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73d6cf05db207d40800000000000000
+      internalID: 5580008132404761469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_5
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 48
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f20566824fefefa50800000000000000
+      internalID: 6556958432101290031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_6
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 48
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb716b6a3e45d4a0800000000000000
+      internalID: -6569258468633379869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Glue Gunner_7
+      rect:
+        serializedVersion: 2
+        x: 911
+        y: 48
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42c3a84ad1f849d50800000000000000
+      internalID: 6743171899557821476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

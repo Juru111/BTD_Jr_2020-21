@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 268bdbaf04445224295746dc2f950b71
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4910892273842918489
+    second: Tack Shooter_0
+  - first:
+      213: -3225210409244724902
+    second: Tack Shooter_1
+  - first:
+      213: 4598700225003324879
+    second: Tack Shooter_2
+  - first:
+      213: 124087381190151695
+    second: Tack Shooter_3
+  - first:
+      213: -5258837534023807817
+    second: Tack Shooter_4
+  - first:
+      213: -4065731725759570108
+    second: Tack Shooter_5
+  - first:
+      213: 6187759514968809163
+    second: Tack Shooter_6
+  - first:
+      213: -1868329603187649314
+    second: Tack Shooter_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Tack Shooter_0
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 168
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7abe167fe7109dbb0800000000000000
+      internalID: -4910892273842918489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 168
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a51731f7830cd33d0800000000000000
+      internalID: -3225210409244724902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_2
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 168
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc505db5d7dd1df30800000000000000
+      internalID: 4598700225003324879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_3
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 168
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e82f4d0d8d8b100800000000000000
+      internalID: 124087381190151695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 50
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc0505102bd407b0800000000000000
+      internalID: -5258837534023807817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 50
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f901e598e9397c0800000000000000
+      internalID: -4065731725759570108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_6
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 49
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce5245ae765fd550800000000000000
+      internalID: 6187759514968809163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tack Shooter_7
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 50
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed457aeef1c5216e0800000000000000
+      internalID: -1868329603187649314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,7 +1,31 @@
 fileFormatVersion: 2
 guid: 35251d37625e25e4ca39ffe089a73bfb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -1641929555413623217
+    second: Bomb Tower_0
+  - first:
+      213: 4728163492968294186
+    second: Bomb Tower_1
+  - first:
+      213: -3683243325486300699
+    second: Bomb Tower_2
+  - first:
+      213: -3990971910523536109
+    second: Bomb Tower_3
+  - first:
+      213: 1018968817129595189
+    second: Bomb Tower_4
+  - first:
+      213: -7996089528295005773
+    second: Bomb Tower_5
+  - first:
+      213: -1430723078754883874
+    second: Bomb Tower_6
+  - first:
+      213: 7675038790803512706
+    second: Bomb Tower_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -84,7 +108,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Bomb Tower_0
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 165
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4e1b57c4c1b639e0800000000000000
+      internalID: -1641929555413623217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_1
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 165
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27685e55afcd9140800000000000000
+      internalID: 4728163492968294186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_2
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 165
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e18f0bc5bd72ecc0800000000000000
+      internalID: -3683243325486300699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_3
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 165
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31dbea441383d98c0800000000000000
+      internalID: -3990971910523536109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_4
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 47
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531a53e8dba142e00800000000000000
+      internalID: 1018968817129595189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_5
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 47
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b161c960fe280190800000000000000
+      internalID: -7996089528295005773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_6
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 47
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6acdea0fc052ce0800000000000000
+      internalID: -1430723078754883874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb Tower_7
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 47
+        width: 90
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28ddf2bbd17338a60800000000000000
+      internalID: 7675038790803512706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
