@@ -21,6 +21,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: 8312135664163331997, guid: 9c29c275c878fd545aeeccffdb09772f,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 90
+    <Path1LvL2Cost>k__BackingField: 120
+    <Path1LvL3Cost>k__BackingField: 500
+    <Path1LvL4Cost>k__BackingField: 1500
     <Path2LvL1>k__BackingField: {fileID: 2722213766051957973, guid: 9c29c275c878fd545aeeccffdb09772f,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: 3456885416203006908, guid: 9c29c275c878fd545aeeccffdb09772f,
@@ -29,6 +33,10 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: 647929582432277673, guid: 9c29c275c878fd545aeeccffdb09772f,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 140
+    <Path2LvL2Cost>k__BackingField: 170
+    <Path2LvL3Cost>k__BackingField: 330
+    <Path2LvL4Cost>k__BackingField: 8000
   tackShooter:
     <Path1LvL1>k__BackingField: {fileID: -4910892273842918489, guid: 268bdbaf04445224295746dc2f950b71,
       type: 3}
@@ -38,6 +46,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: 124087381190151695, guid: 268bdbaf04445224295746dc2f950b71,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 210
+    <Path1LvL2Cost>k__BackingField: 300
+    <Path1LvL3Cost>k__BackingField: 500
+    <Path1LvL4Cost>k__BackingField: 2500
     <Path2LvL1>k__BackingField: {fileID: -5258837534023807817, guid: 268bdbaf04445224295746dc2f950b71,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: -4065731725759570108, guid: 268bdbaf04445224295746dc2f950b71,
@@ -46,6 +58,10 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: -1868329603187649314, guid: 268bdbaf04445224295746dc2f950b71,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 100
+    <Path2LvL2Cost>k__BackingField: 225
+    <Path2LvL3Cost>k__BackingField: 680
+    <Path2LvL4Cost>k__BackingField: 2700
   bombShooter:
     <Path1LvL1>k__BackingField: {fileID: -1641929555413623217, guid: 35251d37625e25e4ca39ffe089a73bfb,
       type: 3}
@@ -55,6 +71,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: -3990971910523536109, guid: 35251d37625e25e4ca39ffe089a73bfb,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 200
+    <Path1LvL2Cost>k__BackingField: 300
+    <Path1LvL3Cost>k__BackingField: 800
+    <Path1LvL4Cost>k__BackingField: 3600
     <Path2LvL1>k__BackingField: {fileID: 1018968817129595189, guid: 35251d37625e25e4ca39ffe089a73bfb,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: -7996089528295005773, guid: 35251d37625e25e4ca39ffe089a73bfb,
@@ -63,6 +83,10 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: 7675038790803512706, guid: 35251d37625e25e4ca39ffe089a73bfb,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 400
+    <Path2LvL2Cost>k__BackingField: 400
+    <Path2LvL3Cost>k__BackingField: 900
+    <Path2LvL4Cost>k__BackingField: 3200
   iceTower:
     <Path1LvL1>k__BackingField: {fileID: -3502894008944053514, guid: ed9b07dd5e531404aa2c9d5d41d1e10b,
       type: 3}
@@ -72,6 +96,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: -6141936866793051218, guid: ed9b07dd5e531404aa2c9d5d41d1e10b,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 225
+    <Path1LvL2Cost>k__BackingField: 400
+    <Path1LvL3Cost>k__BackingField: 6500
+    <Path1LvL4Cost>k__BackingField: 6000
     <Path2LvL1>k__BackingField: {fileID: -4699371127715528508, guid: ed9b07dd5e531404aa2c9d5d41d1e10b,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: 6504868523690394875, guid: ed9b07dd5e531404aa2c9d5d41d1e10b,
@@ -80,6 +108,10 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: 6134977346143798750, guid: ed9b07dd5e531404aa2c9d5d41d1e10b,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 100
+    <Path2LvL2Cost>k__BackingField: 350
+    <Path2LvL3Cost>k__BackingField: 2000
+    <Path2LvL4Cost>k__BackingField: 2000
   glueMonkey:
     <Path1LvL1>k__BackingField: {fileID: 3106183571017983921, guid: 81bf9f8b9f6926344978d745110900eb,
       type: 3}
@@ -89,6 +121,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: -793106234804586345, guid: 81bf9f8b9f6926344978d745110900eb,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 200
+    <Path1LvL2Cost>k__BackingField: 300
+    <Path1LvL3Cost>k__BackingField: 3300
+    <Path1LvL4Cost>k__BackingField: 12500
     <Path2LvL1>k__BackingField: {fileID: 5580008132404761469, guid: 81bf9f8b9f6926344978d745110900eb,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: 6556958432101290031, guid: 81bf9f8b9f6926344978d745110900eb,
@@ -97,6 +133,10 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: 6743171899557821476, guid: 81bf9f8b9f6926344978d745110900eb,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 120
+    <Path2LvL2Cost>k__BackingField: 2200
+    <Path2LvL3Cost>k__BackingField: 2350
+    <Path2LvL4Cost>k__BackingField: 5500
   monkeyBuccaneer:
     <Path1LvL1>k__BackingField: {fileID: 7237789665797321578, guid: 6a09a3592c52ef245b5b82f9aa24aa57,
       type: 3}
@@ -106,6 +146,10 @@ MonoBehaviour:
       type: 3}
     <Path1LvL4>k__BackingField: {fileID: -7802341273129252912, guid: 6a09a3592c52ef245b5b82f9aa24aa57,
       type: 3}
+    <Path1LvL1Cost>k__BackingField: 180
+    <Path1LvL2Cost>k__BackingField: 300
+    <Path1LvL3Cost>k__BackingField: 2300
+    <Path1LvL4Cost>k__BackingField: 5500
     <Path2LvL1>k__BackingField: {fileID: -1017072955503805628, guid: 6a09a3592c52ef245b5b82f9aa24aa57,
       type: 3}
     <Path2LvL2>k__BackingField: {fileID: -3675479084115909946, guid: 6a09a3592c52ef245b5b82f9aa24aa57,
@@ -114,3 +158,7 @@ MonoBehaviour:
       type: 3}
     <Path2LvL4>k__BackingField: {fileID: 5719092029956298610, guid: 6a09a3592c52ef245b5b82f9aa24aa57,
       type: 3}
+    <Path2LvL1Cost>k__BackingField: 500
+    <Path2LvL2Cost>k__BackingField: 400
+    <Path2LvL3Cost>k__BackingField: 1200
+    <Path2LvL4Cost>k__BackingField: 4500

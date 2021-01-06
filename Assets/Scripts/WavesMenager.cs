@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameMenager : MonoBehaviour
+public class WavesMenager : MonoBehaviour
 {
 
     private Vector3 startPoint;
@@ -48,6 +48,6 @@ public class GameMenager : MonoBehaviour
 
     public void DebugLogging()
     {
-        Debug.Log("Debug Logging from GameMenager");
+        Debug.Log("Debug Logging from WavesMenager");
     }
 }

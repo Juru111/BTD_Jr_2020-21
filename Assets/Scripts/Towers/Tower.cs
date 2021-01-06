@@ -142,7 +142,7 @@ public class Tower : MonoBehaviour
         isAttackCorutine = false;
     }
 
-    protected virtual void UpgradeMe(int path)
+    public virtual void UpgradeMe(int path)
     {
         if(path == 1)
         {

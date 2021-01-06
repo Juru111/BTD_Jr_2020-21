@@ -17,20 +17,24 @@ public class ImputMenager : MonoBehaviour
         {
             HandleLeftMouseButtonClicked();
         }
+        //Debug.Log(Input.mousePosition);
     }
 
     private void HandleLeftMouseButtonClicked()
     {
-        RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, distance: 100, layerMask: clickableLayerMask);
-        if (hit.collider != null)
+        if (Input.mousePosition.x < 836 && Input.mousePosition.y > 100)
         {
-            IClickable currentTarget = hit.collider.gameObject.GetComponent<IClickable>();
-            currentTarget?.OnSelected();
-            SetSelectedObject(currentTarget);
-        }
-        else
-        {
-            SetSelectedObject(null);
+            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, distance: 100, layerMask: clickableLayerMask);
+            if (hit.collider != null)
+            {
+                IClickable currentTarget = hit.collider.gameObject.GetComponent<IClickable>();
+                currentTarget?.OnSelected();
+                SetSelectedObject(currentTarget);
+            }
+            else
+            {
+                SetSelectedObject(null);
+            }
         }
     }
 

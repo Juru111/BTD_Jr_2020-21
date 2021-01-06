@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
-    #region Sprite-y uleprzeń
+    #region Uleprzenia
 
     public DartMonkey dartmonkey;
     public TackShooter tackShooter;
@@ -22,11 +22,20 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
+
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
     [System.Serializable]
     public class TackShooter
@@ -35,11 +44,19 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
     [System.Serializable]
     public class BombShooter
@@ -48,11 +65,19 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
     [System.Serializable]
     public class IceTower
@@ -61,11 +86,19 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
     [System.Serializable]
     public class GlueMonkey
@@ -74,11 +107,19 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
     [System.Serializable]
     public class MonkeyBuccaneer
@@ -87,11 +128,19 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public Sprite Path1LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path1LvL4 { get; private set; }
+        [field: SerializeField] public int Path1LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path1LvL4Cost { get; private set; }
 
         [field: SerializeField] public Sprite Path2LvL1 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL2 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL3 { get; private set; }
         [field: SerializeField] public Sprite Path2LvL4 { get; private set; }
+        [field: SerializeField] public int Path2LvL1Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL2Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL3Cost { get; private set; }
+        [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
 
     #endregion
