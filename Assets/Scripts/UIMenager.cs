@@ -39,15 +39,15 @@ public class UIMenager : MonoBehaviour
     [SerializeField]
     private Image path2ToBuy;
 
-    //Nie działa :(
-        //[System.Serializable]
-        //private class Path1
-        //{
-        //    [SerializeField]
-        //    private TMP_Text Info;
-        //    private Image Active;private TMP_Text BuyInfo;
-        //    private Image ToBuy;
-        //}
+    
+    //[System.Serializable]
+    //public class Path1
+    //{
+    //[SerializeField]
+    //private TMP_Text Info;
+    //private Image Active; private TMP_Text BuyInfo;
+    //private Image ToBuy;
+    //}
 
     private Button path1Button;
     private Button path2Button;

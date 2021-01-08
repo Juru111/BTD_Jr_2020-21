@@ -1,0 +1,583 @@
+fileFormatVersion: 2
+guid: 809ed4e4bcc1349449c74625c15be5a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4281051457934991263
+    second: in_game_monkeys_0
+  - first:
+      213: -3901980894992673793
+    second: in_game_monkeys_1
+  - first:
+      213: -6800685435244714319
+    second: in_game_monkeys_2
+  - first:
+      213: 8652295904339055203
+    second: in_game_monkeys_3
+  - first:
+      213: 216182930366885833
+    second: in_game_monkeys_4
+  - first:
+      213: -353915941372491387
+    second: in_game_monkeys_5
+  - first:
+      213: 4344090312114551614
+    second: in_game_monkeys_6
+  - first:
+      213: 7820877767843843512
+    second: in_game_monkeys_7
+  - first:
+      213: -2367655722702715771
+    second: in_game_monkeys_8
+  - first:
+      213: 5233138077505527923
+    second: in_game_monkeys_9
+  - first:
+      213: -2617089006413922819
+    second: in_game_monkeys_10
+  - first:
+      213: 7965320546918176928
+    second: in_game_monkeys_11
+  - first:
+      213: 1259237477162416426
+    second: in_game_monkeys_12
+  - first:
+      213: -4408098848969475463
+    second: in_game_monkeys_13
+  - first:
+      213: 7473045156499640286
+    second: in_game_monkeys_14
+  - first:
+      213: -7116320841608203329
+    second: in_game_monkeys_15
+  - first:
+      213: -6632028120833038715
+    second: in_game_monkeys_16
+  - first:
+      213: 2251333142441136440
+    second: in_game_monkeys_17
+  - first:
+      213: 794825298645691492
+    second: in_game_monkeys_18
+  - first:
+      213: -4324724398821958148
+    second: in_game_monkeys_19
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: in_game_monkeys_0
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 309
+        width: 67
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160ed988166a694c0800000000000000
+      internalID: -4281051457934991263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_1
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 321
+        width: 43
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff3d991bc0169d9c0800000000000000
+      internalID: -3901980894992673793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_2
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 317
+        width: 53
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b6e013d0ac1f91a0800000000000000
+      internalID: -6800685435244714319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_3
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 296
+        width: 78
+        height: 79
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36252bd7841231870800000000000000
+      internalID: 8652295904339055203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_4
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 213
+        width: 102
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf6503da39000300800000000000000
+      internalID: 216182930366885833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_5
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 260
+        width: 102
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58905229353a61bf0800000000000000
+      internalID: -353915941372491387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 276
+        width: 37
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3bbdc57f1f494c30800000000000000
+      internalID: 4344090312114551614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_7
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 275
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd0510a4e6598c60800000000000000
+      internalID: 7820877767843843512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_8
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 214
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58442e12aa5642fd0800000000000000
+      internalID: -2367655722702715771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_9
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 223
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 370a94aea57df9840800000000000000
+      internalID: 5233138077505527923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 68
+        width: 52
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd3e132a6b3eabd0800000000000000
+      internalID: -2617089006413922819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 113
+        width: 66
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a89d29d5d08a8e60800000000000000
+      internalID: 7965320546918176928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_12
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 77
+        width: 49
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a29ff1250d5b97110800000000000000
+      internalID: 1259237477162416426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_13
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 106
+        width: 55
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97abd54b37943d2c0800000000000000
+      internalID: -4408098848969475463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_14
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 72
+        width: 42
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf4d97d9f695b760800000000000000
+      internalID: 7473045156499640286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_15
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 110
+        width: 40
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb3fb3006efbd3d90800000000000000
+      internalID: -7116320841608203329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_16
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 5
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5866855ef8d46f3a0800000000000000
+      internalID: -6632028120833038715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_17
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 21
+        width: 52
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8319442a0975e3f10800000000000000
+      internalID: 2251333142441136440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_18
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 24
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46c2540e569c70b00800000000000000
+      internalID: 794825298645691492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: in_game_monkeys_19
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 30
+        width: 45
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfd90c8921e7bf3c0800000000000000
+      internalID: -4324724398821958148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

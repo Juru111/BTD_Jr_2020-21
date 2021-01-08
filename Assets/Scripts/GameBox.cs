@@ -17,9 +17,6 @@ public class GameBox : MonoBehaviour
 
     private void Awake()
     {
-        //chyba lepiej tu niż w każdym poolowanym obiekcie
-        //poolingMenager = FindObjectOfType<PoolingMenager>();
-
         if (instance == null)
         {
             instance = this;
