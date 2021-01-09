@@ -29,7 +29,7 @@ public class TackSooter : Tower
         {
             for (int i = 0; i < projectileCount; i++)
             {
-                GameBox.instance.poolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, 360/projectileCount * i, range);
+                GameBox.instance.poolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, 360/projectileCount * i, range, false);
             }
             yield return new WaitForSeconds(attackSpeed);
         }

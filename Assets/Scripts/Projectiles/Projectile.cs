@@ -6,18 +6,13 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]
     protected ProjectileTypes projectileName;
-    [SerializeField]
     protected int popCountLeft = 1;
-    [SerializeField]
     protected int power = 1;
-    [SerializeField]
     protected float movementSpeed = 5;
-    [SerializeField]
     protected float rotationAngle;
-    [SerializeField]
     protected float range = 10;
-    [SerializeField]
     protected float rangeLeft;
+    protected bool canHitCamo;
 
     protected float spriteRotationAngle;
     [SerializeField]
@@ -47,7 +42,7 @@ public class Projectile : MonoBehaviour
     }
 
     public virtual void SetMe(ProjectileTypes _projectileName, Vector3 _position, int _popCountLeft, int _power,
-                                        float _movementSpeed, float _rotationAngle, float _range)
+                                        float _movementSpeed, float _rotationAngle, float _range, bool _canHitCamo)
     {
         projectileName = _projectileName;
         transform.position = _position;
@@ -56,13 +51,17 @@ public class Projectile : MonoBehaviour
         movementSpeed = _movementSpeed;
         rotationAngle = _rotationAngle;
         range = _range;
+        canHitCamo = _canHitCamo;
 
         CalculateProjectileData();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Bloon bloonComponent) && gameObject != bloonComponent.parentPopProjectle && popCountLeft > 0)
+        if (collision.TryGetComponent(out Bloon bloonComponent) &&
+            gameObject != bloonComponent.parentPopProjectle &&
+            popCountLeft > 0 &&
+            (bloonComponent.isCammo == false || canHitCamo))
         {
             ProjectileAction(bloonComponent);
         }

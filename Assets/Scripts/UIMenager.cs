@@ -140,7 +140,7 @@ public class UIMenager : MonoBehaviour
         }
 
         //Next upgrade on Path 1
-        if (_tower.path2Lv > 2)
+        if (_tower.path2Lv > 2 && _tower.path1Lv > 1)
         {
             path1Button.interactable = false;
 
@@ -163,7 +163,7 @@ public class UIMenager : MonoBehaviour
             sb.Clear();
         }
 
-        if (_tower.path2Lv > 2 || GiveUpgradeIcon(_tower.towerName, 1, _tower.path1Lv + 1) == null)
+        if ((_tower.path2Lv > 2 && _tower.path1Lv > 1) || GiveUpgradeIcon(_tower.towerName, 1, _tower.path1Lv + 1) == null)
         {
             path1ToBuy.enabled = false;
         }
@@ -188,7 +188,7 @@ public class UIMenager : MonoBehaviour
         }
 
         //Next upgrade on Path 2
-        if (_tower.path1Lv > 2)
+        if (_tower.path1Lv > 2 && _tower.path2Lv > 1)
         {
             path2Button.interactable = false;
             sb.AppendFormat("Path\nClosed");
@@ -210,7 +210,7 @@ public class UIMenager : MonoBehaviour
             sb.Clear();
         }
         
-        if (_tower.path1Lv > 2 || GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv + 1) == null)
+        if ((_tower.path1Lv > 2 && _tower.path2Lv > 1) || GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv + 1) == null)
         {
             path2ToBuy.enabled = false;
         }
@@ -231,10 +231,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartmonkey.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.dartmonkey.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.dartmonkey.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.dartmonkey.Path1LvL4;
+                        case 1: return GameBox.instance.dataBase.dartMonkey.Path1LvL1;
+                        case 2: return GameBox.instance.dataBase.dartMonkey.Path1LvL2;
+                        case 3: return GameBox.instance.dataBase.dartMonkey.Path1LvL3;
+                        case 4: return GameBox.instance.dataBase.dartMonkey.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -242,10 +242,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartmonkey.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.dartmonkey.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.dartmonkey.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.dartmonkey.Path2LvL4;
+                        case 1: return GameBox.instance.dataBase.dartMonkey.Path2LvL1;
+                        case 2: return GameBox.instance.dataBase.dartMonkey.Path2LvL2;
+                        case 3: return GameBox.instance.dataBase.dartMonkey.Path2LvL3;
+                        case 4: return GameBox.instance.dataBase.dartMonkey.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -402,10 +402,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartmonkey.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.dartmonkey.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.dartmonkey.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.dartmonkey.Path1LvL4Cost;
+                        case 1: return GameBox.instance.dataBase.dartMonkey.Path1LvL1Cost;
+                        case 2: return GameBox.instance.dataBase.dartMonkey.Path1LvL2Cost;
+                        case 3: return GameBox.instance.dataBase.dartMonkey.Path1LvL3Cost;
+                        case 4: return GameBox.instance.dataBase.dartMonkey.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -413,10 +413,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartmonkey.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.dartmonkey.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.dartmonkey.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.dartmonkey.Path2LvL4Cost;
+                        case 1: return GameBox.instance.dataBase.dartMonkey.Path2LvL1Cost;
+                        case 2: return GameBox.instance.dataBase.dartMonkey.Path2LvL2Cost;
+                        case 3: return GameBox.instance.dataBase.dartMonkey.Path2LvL3Cost;
+                        case 4: return GameBox.instance.dataBase.dartMonkey.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -580,13 +580,29 @@ public class UIMenager : MonoBehaviour
 
     public void UpgradeSelectedPath1()
     {
-        //wymagania kosztów TODO
-        selectedTower.UpgradeMe(1);
-        RefreshUpgradePanel(selectedTower);
+        if(moneyCount >= GiveUpgradeCost(selectedTower.towerName, 1, selectedTower.path1Lv+1))
+        {
+            ChangeMoneyBalance(-GiveUpgradeCost(selectedTower.towerName, 1, selectedTower.path1Lv+1));
+            selectedTower.UpgradeMe(1);
+            RefreshUpgradePanel(selectedTower);
+        }
+        else
+        {
+            //no
+        }
+        
     }
     public void UpgradeSelectedPath2()
     {
-        selectedTower.UpgradeMe(2);
-        RefreshUpgradePanel(selectedTower);
+        if (moneyCount >= GiveUpgradeCost(selectedTower.towerName, 2, selectedTower.path2Lv+1))
+        {
+            ChangeMoneyBalance(-GiveUpgradeCost(selectedTower.towerName, 2, selectedTower.path2Lv+1));
+            selectedTower.UpgradeMe(2);
+            RefreshUpgradePanel(selectedTower);
+        }
+        else
+        {
+            //no
+        }
     }
 }

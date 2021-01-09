@@ -9,12 +9,10 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected float attackSpeed;
     [SerializeField]
-    protected float designRange;
-    protected float range;
+    protected float designTowerRange;
     [SerializeField]
-    protected GameObject rangeIndicator;
-
-    protected CircleCollider2D myCircleCollider2D;
+    protected bool canSeeCamo;
+    
     [SerializeField]
     protected ProjectileTypes projectileType;
     [SerializeField]
@@ -23,28 +21,32 @@ public class Tower : MonoBehaviour
     protected int projectilePower = 1;
     [SerializeField]
     protected float projectileSpeed = 10;
-    
+    [SerializeField]
+    protected GameObject rangeIndicator;
+
+
+    protected float range;
+    protected float projectileRange;
+    protected CircleCollider2D myCircleCollider2D;
+    protected SpriteRenderer mySpriteRenderer;
+    protected UIMenager UIMenager;
     protected GameObject target;
-    [SerializeField]
     protected bool bloonInRange = false;
-    [SerializeField]
+    protected bool seeableBloonInRange = false;
     protected bool isSearchCorutine = false;
-    [SerializeField]
     protected bool isAttackCorutine = false;
     LayerMask BloonsMask;
 
-    #region Uleprzenia
-    [field: SerializeField]
-    public int path1Lv { private set; get; } = 0;
-    [field: SerializeField]
-    public int path2Lv { private set; get; } = 0;
-    #endregion
+    public int path1Lv { protected set; get; } = 0;
+    public int path2Lv { protected set; get; } = 0;
 
     protected virtual void Start()
     {
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         myCircleCollider2D = GetComponent<CircleCollider2D>();
         BloonsMask = LayerMask.GetMask("Bloons");
-        MultilpyRefreshRange(1);
+        UIMenager = GameBox.instance.uIMenager;
+        AddRefreshRange(0);
         target = gameObject;
     }
 
@@ -56,16 +58,16 @@ public class Tower : MonoBehaviour
             StartCoroutine(TowerSearch());
             isSearchCorutine = true;
         }
-        if (bloonInRange && isAttackCorutine == false)
+        if (bloonInRange && isAttackCorutine == false && seeableBloonInRange)
         {
             StartCoroutine(TowerAttack());
             isAttackCorutine = true;
         }
 
         //Obracanie samej wierzy w kierunku targetowanego bloona
-        if (bloonInRange)
+        if (bloonInRange && seeableBloonInRange)
         {
-            transform.up = target.transform.position - transform.position;
+            transform.up = transform.position - target.transform.position;
         }
     }
 
@@ -81,12 +83,14 @@ public class Tower : MonoBehaviour
         bloonInRange = true;
     }
 
-    protected virtual void MultilpyRefreshRange(float muntiplication)
+    protected virtual void AddRefreshRange(float additionDesignRange)
     {
-        designRange *= muntiplication;
-        rangeIndicator.transform.localScale = new Vector3(designRange / 100, designRange / 100, 1);
-        range = (float)(designRange * 0.0085); //zmienna "range" jest przydatna w innych miejscach też - jest bardziej naturalna dla Unity
+        designTowerRange += additionDesignRange;
+        rangeIndicator.transform.localScale = new Vector3(designTowerRange / 100, designTowerRange / 100, 1);
+        range = (float)(designTowerRange * 0.0085); //zmienna "range" jest przydatna w innych miejscach też - jest bardziej naturalna dla Unity
         myCircleCollider2D.radius = range;
+
+        projectileRange = range * 1.1f;
     }
 
     //Przeszukiwanie wszystkich balonów w zasięgu oraz stierdzenie, który jest najbliższy końca
@@ -96,23 +100,28 @@ public class Tower : MonoBehaviour
         float leastDistanceToWaypoint = 999999;
         while (bloonInRange)
         {
+            seeableBloonInRange = false;
             foreach (Collider2D bloonCollider in Physics2D.OverlapCircleAll(transform.position, range, BloonsMask, 0, 0))
             {
                 //!!! Optymalizuj, ale jak?? : włąsny Collider2D, który zapisuje odrazu kalsy Bloon
                 if (bloonCollider.gameObject.TryGetComponent(out Bloon bloonObject))
                 {
-                    if(bloonObject.myNextWaypoint > biggestNextWaypoint)
+                    if (bloonObject.isCammo == false || canSeeCamo)
                     {
-                        biggestNextWaypoint = bloonObject.myNextWaypoint;
-                        leastDistanceToWaypoint = bloonObject.distanceToWaypoint;
-                        target = bloonObject.gameObject;
-                    }
-                    else if (bloonObject.myNextWaypoint == biggestNextWaypoint)
-                    {
-                        if(bloonObject.distanceToWaypoint < leastDistanceToWaypoint)
+                        seeableBloonInRange = true;
+                        if (bloonObject.myNextWaypoint > biggestNextWaypoint)
                         {
+                            biggestNextWaypoint = bloonObject.myNextWaypoint;
                             leastDistanceToWaypoint = bloonObject.distanceToWaypoint;
                             target = bloonObject.gameObject;
+                        }
+                        else if (bloonObject.myNextWaypoint == biggestNextWaypoint)
+                        {
+                            if (bloonObject.distanceToWaypoint < leastDistanceToWaypoint)
+                            {
+                                leastDistanceToWaypoint = bloonObject.distanceToWaypoint;
+                                target = bloonObject.gameObject;
+                            }
                         }
                     }
                 }
@@ -132,11 +141,11 @@ public class Tower : MonoBehaviour
         {
             //kalkulacje oraz summon projectile-a
             float angle = Mathf.Atan2(target.transform.position.y - transform.position.y, target.transform.position.x - transform.position.x) * 180 / Mathf.PI;
-            GameBox.instance.poolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, range);
+            GameBox.instance.poolingMenager.SummonProjectile(projectileType, transform.position, projectilePierce, projectilePower, projectileSpeed, angle, projectileRange, canSeeCamo);
         }
         else
         {
-            Debug.LogWarning("target is emppty");
+            Debug.LogError("target is emppty");
         }
         yield return new WaitForSeconds(attackSpeed);
         isAttackCorutine = false;
@@ -164,6 +173,7 @@ public class Tower : MonoBehaviour
                     Debug.LogError("niepoprawny upgrade pathu 1", gameObject);
                     break;
             }
+            path1Lv++;
         }
         else if (path == 2)
         {
@@ -185,6 +195,7 @@ public class Tower : MonoBehaviour
                     Debug.LogError("niepoprawny upgrade pathu 2", gameObject);
                     break;
             }
+            path2Lv++;
         }
         else
         { Debug.LogError("niepoprawny nr pathu", gameObject); }
@@ -192,13 +203,13 @@ public class Tower : MonoBehaviour
 
     //poniższe do nadpisywania w dziedziceniach
     #region Upgrades Funcions
-    protected virtual void Path1toLv1() { Debug.Log("P1 to Lv1"); path1Lv++; }
-    protected virtual void Path1toLv2() { Debug.Log("P1 to Lv2"); path1Lv++; }
-    protected virtual void Path1toLv3() { Debug.Log("P1 to Lv3"); path1Lv++; }
-    protected virtual void Path1toLv4() { Debug.Log("P1 to Lv4"); path1Lv++; }
-    protected virtual void Path2toLv1() { Debug.Log("P2 to Lv1"); path2Lv++; }
-    protected virtual void Path2toLv2() { Debug.Log("P2 to Lv2"); path2Lv++; }
-    protected virtual void Path2toLv3() { Debug.Log("P2 to Lv3"); path2Lv++; }
-    protected virtual void Path2toLv4() { Debug.Log("P2 to Lv4"); path2Lv++; }
+    protected virtual void Path1toLv1() { }
+    protected virtual void Path1toLv2() { }
+    protected virtual void Path1toLv3() { }
+    protected virtual void Path1toLv4() { }
+    protected virtual void Path2toLv1() { }
+    protected virtual void Path2toLv2() { }
+    protected virtual void Path2toLv3() { }
+    protected virtual void Path2toLv4() { }
     #endregion
 }

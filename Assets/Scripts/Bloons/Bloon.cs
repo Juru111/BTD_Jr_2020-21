@@ -6,12 +6,12 @@ using UnityEngine;
 public class Bloon : MonoBehaviour
 {
     #region Dane potrzebne do spawnu kolejnych balownów
-    [SerializeField]
-    protected BloonTypes bloonName;
+    [field: SerializeField]
+    public BloonTypes bloonName { get; protected set; }
     [SerializeField]
     protected int layersLeft = 1;
-    [SerializeField]
-    protected bool isCammo;
+    [field: SerializeField]
+    public bool isCammo { protected set; get; }
     [SerializeField]
     protected bool isRegrow;
     [field: SerializeField]

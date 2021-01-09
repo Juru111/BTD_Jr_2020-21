@@ -43,9 +43,9 @@ public class PoolingMenager : MonoBehaviour
         public int startSize;
     }
     [SerializeField]
-    private PopIconInfo popIconInfo;
-    [SerializeField]
     private Transform popIconsAnchor;
+    [SerializeField]
+    private PopIconInfo popIconInfo;
     Queue<GameObject> popPool = new Queue<GameObject>();
 
     void Awake()
@@ -144,7 +144,8 @@ public class PoolingMenager : MonoBehaviour
 
     }
 
-    public void SummonProjectile(ProjectileTypes projectileName, Vector3 position, int pierce, int power, float movementSpeed, float rotationnAngle, float range)
+    public void SummonProjectile(ProjectileTypes projectileName, Vector3 position, int pierce, int power,
+                                float movementSpeed, float rotationnAngle, float range, bool canHitCamo)
     {
         //jeśli w jest dostępny taki projectile to go summonuje
         if (projectileTypesDictionary[projectileName.ToString()].Count > 0)
@@ -154,7 +155,7 @@ public class PoolingMenager : MonoBehaviour
 
             if (projectileToSummon.TryGetComponent<Projectile>(out Projectile projectileComponent))
             {
-                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range);
+                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range, canHitCamo);
             }
             else
             { Debug.LogError(projectileToSummon + " nie posiada komponentu Projectile!"); }
@@ -174,7 +175,7 @@ public class PoolingMenager : MonoBehaviour
 
             if (projectileToSummon.TryGetComponent<Projectile>(out Projectile projectileComponent))
             {
-                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range);
+                projectileComponent.SetMe(projectileName, position, pierce, power, movementSpeed, rotationnAngle, range, canHitCamo);
             }
             else
             { Debug.LogError(projectileToSummon + " nie posiada komponentu Projectile!"); }
