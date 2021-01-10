@@ -106,13 +106,12 @@ public class Bloon : MonoBehaviour
 
     public virtual void LayerPop(int power, GameObject parentPopProjectle)
     {
-        layersLeft -= power;
         GameBox.instance.poolingMenager.SummonPop(transform.position);
 
         if(bloonName != BloonTypes.Red)
         {
             BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
         }
         else
         {

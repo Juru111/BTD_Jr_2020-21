@@ -125,6 +125,7 @@ public class UIMenager : MonoBehaviour
         sb.Clear();
 
         #region UpgradesPanel
+
         //Current Upgrade on Path 1
         sb.AppendFormat("Lvl {0}\nPath 1", _tower.path1Lv);
         path1Info.text = sb.ToString();
@@ -219,6 +220,7 @@ public class UIMenager : MonoBehaviour
             path2ToBuy.enabled = true;
             path2ToBuy.sprite = GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv + 1);
         }
+
         #endregion
     }
 

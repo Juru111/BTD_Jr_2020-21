@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected ProjectileTypes projectileName;
     protected int popCountLeft = 1;
+    [SerializeField]
     protected int power = 1;
     protected float movementSpeed = 5;
     protected float rotationAngle;

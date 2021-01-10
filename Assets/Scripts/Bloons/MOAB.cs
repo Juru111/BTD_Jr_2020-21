@@ -6,26 +6,26 @@ public class MOAB : Bloon
 {
     [SerializeField]
     protected float spacing = 0.1f;
-    private int healthPoints = 200;
+    private int healthPointsLeft = 200;
     public override void LayerPop(int power, GameObject _parentPopProjectle)
     {
-        if (healthPoints > 1)
+        if (healthPointsLeft > power)
         {
-            healthPoints -= 1;
+            healthPointsLeft -= power;
             parentPopProjectle = _parentPopProjectle;
             GameBox.instance.poolingMenager.SummonPop(transform.position);
         }
         else
         {
             //obliczenia właściwości dodatkowych balonów
-            BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
             Vector3 backDirection = transform.position - GameBox.instance.waypoints[myNextWaypoint].position;
-            //summonowanie dodatkowego bloonów
-            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - 1, transform.position +     spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint +     spacing, isCammo, isRegrow, _parentPopProjectle);
-            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - 1, transform.position + 2 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 2 * spacing, isCammo, isRegrow, _parentPopProjectle);
-            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - 1, transform.position + 3 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 3 * spacing, isCammo, isRegrow, _parentPopProjectle);
+            power -= healthPointsLeft;
+            //summonowanie dodatkowych bloonów
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position +     spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint +     spacing, isCammo, isRegrow, _parentPopProjectle);
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 2 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 2 * spacing, isCammo, isRegrow, _parentPopProjectle);
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 3 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 3 * spacing, isCammo, isRegrow, _parentPopProjectle);
 
-            base.LayerPop(power, _parentPopProjectle);
+            base.LayerPop(power + 1, _parentPopProjectle);
         }
     }
 

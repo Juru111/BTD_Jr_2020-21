@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class CeramicBloon : DoubleBloon
 {
-    private int healthPoints = 10;
+    private int healthPointsLeft = 10;
     public override void LayerPop(int power, GameObject _parentPopProjectle)
     {
-        if (healthPoints > 1)
+        //w przypadku gdy SetMe() wywołą LayerPop() by obliczyć nadwyżkę obrażeń (obie metody z klasy Bloon)
+        if (layersLeft < 9)
         {
-            healthPoints -= 1;
-            parentPopProjectle = _parentPopProjectle;
-            GameBox.instance.poolingMenager.SummonPop(transform.position);
+            healthPointsLeft -= (9 - layersLeft);
+            layersLeft = 9;
+            if(healthPointsLeft < 1)
+            {
+                base.LayerPop(-healthPointsLeft + 1, _parentPopProjectle);
+            }
         }
+        //w pozostałych ("normalnych") przypadkach
         else
         {
-            base.LayerPop(power, _parentPopProjectle);
+            if (healthPointsLeft > power)
+            {
+                healthPointsLeft -= power;
+                parentPopProjectle = _parentPopProjectle;
+                GameBox.instance.poolingMenager.SummonPop(transform.position);
+            }
+            else
+            {
+                power -= healthPointsLeft;
+                base.LayerPop(power + 1, _parentPopProjectle);
+            }
         }
     }
 }

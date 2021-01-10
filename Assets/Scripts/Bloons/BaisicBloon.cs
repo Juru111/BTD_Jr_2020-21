@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaisicBloon : Bloon
 {
+    //skrypt aktualnie nie używany
     /*private CircleCollider2D myCircleCollider2D;
     private SpriteRenderer mySpriteRenderer;
 

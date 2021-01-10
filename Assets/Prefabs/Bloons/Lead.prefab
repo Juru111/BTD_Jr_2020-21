@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d1518444846384589a33bb1cfa980d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloonName: 107
+  <bloonName>k__BackingField: 107
   layersLeft: 7
-  isCammo: 0
+  <isCammo>k__BackingField: 0
   isRegrow: 0
   <myNextWaypoint>k__BackingField: 0
   <distanceToWaypoint>k__BackingField: 0

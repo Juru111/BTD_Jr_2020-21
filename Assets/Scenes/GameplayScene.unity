@@ -2855,6 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyDisplay: {fileID: 1703998824}
+  moneyCount: 0
   hpDisplay: {fileID: 640470154}
   hpCount: 100
   upgradePanel: {fileID: 735895247}
