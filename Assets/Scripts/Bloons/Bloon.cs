@@ -26,12 +26,17 @@ public class Bloon : MonoBehaviour
     protected float movementSpeed = 3.5f;
     [SerializeField]
     protected UIMenager uiMenaner;
+    [SerializeField]
+    protected GameObject cammoSpriteObject;
+    protected SpriteRenderer mySpriteRenderer;
 
     protected virtual void Awake()
     {
         uiMenaner = FindObjectOfType<UIMenager>();
         //GameBox.instance.GameMenager;
         //które leprze? i dlaczego to drugie nie działa (w Starcie)
+        mySpriteRenderer = GetComponent<SpriteRenderer>(); //przydaje sié te w Ceramic Bloon
+        cammoSpriteObject.GetComponent<SpriteRenderer>().sortingOrder = mySpriteRenderer.sortingOrder + 1;
     }
 
     protected virtual void Update()
@@ -95,6 +100,7 @@ public class Bloon : MonoBehaviour
         myNextWaypoint = _myNextWayPoint;
         distanceToWaypoint = _distanceToWaypoint;
         isCammo = _isCammo;
+        cammoSpriteObject.SetActive(isCammo);
         isRegrow = _isRegrow;
         parentPopProjectle = _parentPopProjectle;
 
