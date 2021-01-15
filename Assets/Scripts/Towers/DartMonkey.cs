@@ -7,6 +7,8 @@ public class DartMonkey : Tower
     [SerializeField]
     private Sprite spikeOPult;
     [SerializeField]
+    private Sprite tripleDart;
+    [SerializeField]
     private bool isTripleProjectile;
 
     protected override void Path1toLv1() 
@@ -44,6 +46,7 @@ public class DartMonkey : Tower
     }
     protected override void Path2toLv3()
     {
+        mySpriteRenderer.sprite = tripleDart;
         isTripleProjectile = true;
     }
     protected override void Path2toLv4() 

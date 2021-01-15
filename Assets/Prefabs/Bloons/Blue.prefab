@@ -49,7 +49,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.03}
   serializedVersion: 2
-  m_Radius: 0.26
+  m_Radius: 0.23
 --- !u!212 &4463053576370402677
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -6
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e8146ca911a52bb4cbc51dde7a6a8f4e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,13 +115,13 @@ MonoBehaviour:
   <bloonName>k__BackingField: 2
   layersLeft: 2
   <isCammo>k__BackingField: 0
-  cammoSpriteObject: {fileID: 5068781121895864411}
   isRegrow: 0
   <myNextWaypoint>k__BackingField: 0
   <distanceToWaypoint>k__BackingField: 0
   <parentPopProjectle>k__BackingField: {fileID: 0}
-  movementSpeed: 1.8
+  movementSpeed: 1.4
   uiMenaner: {fileID: 0}
+  cammoSpriteObject: {fileID: 5068781121895864411}
 --- !u!1 &5068781121895864411
 GameObject:
   m_ObjectHideFlags: 0

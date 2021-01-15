@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
-    #region Uleprzenia
+    public TowerBuyCost towerBuyCost;
 
     public UpgradesData dartMonkey;
     public UpgradesData tackShooter;
@@ -38,6 +38,15 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public int Path2LvL3Cost { get; private set; }
         [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
+    [System.Serializable]
+    public class TowerBuyCost
+    {
+        [field: SerializeField] public int dartMonkey { get; private set; }
+        [field: SerializeField] public int tackShooter { get; private set; }
+        [field: SerializeField] public int bombShooter { get; private set; }
+        [field: SerializeField] public int iceTower { get; private set; }
+        [field: SerializeField] public int glueMonkey { get; private set; }
+        [field: SerializeField] public int monkeyBuccaneer { get; private set; }
+    }
 
-    #endregion
 }

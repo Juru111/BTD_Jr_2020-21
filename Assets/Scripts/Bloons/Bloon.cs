@@ -35,7 +35,7 @@ public class Bloon : MonoBehaviour
         uiMenaner = FindObjectOfType<UIMenager>();
         //GameBox.instance.GameMenager;
         //które leprze? i dlaczego to drugie nie działa (w Starcie)
-        mySpriteRenderer = GetComponent<SpriteRenderer>(); //przydaje sié te w Ceramic Bloon
+        mySpriteRenderer = GetComponent<SpriteRenderer>(); //przydaje się też w Ceramic Bloon
         cammoSpriteObject.GetComponent<SpriteRenderer>().sortingOrder = mySpriteRenderer.sortingOrder + 1;
     }
 

@@ -24,7 +24,7 @@ public class WavesMenager : MonoBehaviour
 
     IEnumerator WIPSpawning()
     {
-        for (int i = 1; i < 11; i++)
+        for (int i = 1; i < 10; i++)
         {
             for (int j = 0; j < 5; j++)
             {

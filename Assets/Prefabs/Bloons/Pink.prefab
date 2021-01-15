@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: ce25e0ef706c54c4699f65521c39257d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -115,13 +115,13 @@ MonoBehaviour:
   <bloonName>k__BackingField: 5
   layersLeft: 5
   <isCammo>k__BackingField: 0
-  cammoSpriteObject: {fileID: 3991925365378115089}
   isRegrow: 0
   <myNextWaypoint>k__BackingField: 0
   <distanceToWaypoint>k__BackingField: 0
   <parentPopProjectle>k__BackingField: {fileID: 0}
   movementSpeed: 3.5
   uiMenaner: {fileID: 0}
+  cammoSpriteObject: {fileID: 3991925365378115089}
 --- !u!1 &3991925365378115089
 GameObject:
   m_ObjectHideFlags: 0

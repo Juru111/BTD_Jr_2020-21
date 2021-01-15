@@ -3,46 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class DragBuy : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DragBuy : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    [SerializeField]
-    private Canvas canvas;
-
+    private Vector3 positionToSpawn;
     private RectTransform myRectTransform;
+    private UIMenager uIMenager;
+    private int myCost;
+
+    [SerializeField]
+    private TowerTypes towerName;
+    [SerializeField]
+    private GameObject towerPrefab;
     [SerializeField]
     private GameObject towerBlueprint;
+    [SerializeField]
+    private GameObject towerAnchor;
+    [SerializeField]
+    private TMP_Text towerCostText;
 
-    private void Awake()
+    private void Start()
     {
+        uIMenager = GameBox.instance.uIMenager;
         myRectTransform = GetComponent<RectTransform>();
+        myCost = uIMenager.GiveTowerCost(towerName);
+        towerCostText.text = myCost.ToString();
         towerBlueprint.SetActive(false);
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        Debug.Log("Click");
-        towerBlueprint.SetActive(true);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Draging");
+        towerBlueprint.SetActive(true);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Drag");
-        //Vector2 localMousePosition = imgRectTransform.InverseTransformPoint(Input.mousePosition);
-
-        Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         myRectTransform.anchoredPosition += eventData.delta;
-        //Camera.main.ScreenToWorldPoint(screenPosition) / canvas.scaleFactor;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("DropDraged");
+        if (uIMenager.TryBuy(myCost))
+        {
+            positionToSpawn = transform.position;
+            positionToSpawn.z = 0;
+            Instantiate(towerPrefab, positionToSpawn, Quaternion.identity, towerAnchor.transform);
+            
+        }
+        else
+        {
+            //NotEnoughMoney Popup
+        }
         myRectTransform.anchoredPosition = Vector2.zero;
         towerBlueprint.SetActive(false);
     }

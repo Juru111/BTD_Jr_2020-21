@@ -63,10 +63,16 @@ public class UIMenager : MonoBehaviour
 
         path1Button = path1BuyInfo.transform.parent.gameObject.GetComponent<Button>();
         path2Button = path2BuyInfo.transform.parent.gameObject.GetComponent<Button>();
+
+    }
+
+    private void Start()
+    {
     }
 
     private void Update()
     {
+        //dev tool
         if(Input.GetKeyDown("g"))
         { ChangeMoneyBalance(1000); }
         if (Input.GetKeyDown("f"))
@@ -85,6 +91,19 @@ public class UIMenager : MonoBehaviour
         RefreshHpDispaly();
     }
     
+    public bool TryBuy(int price)
+    {
+        if(moneyCount<price)
+        {
+            return false;
+        }
+        else
+        {
+            ChangeMoneyBalance(-price);
+            return true;
+        }
+    }
+
     public void ChangeMoneyBalance(int moneyChange)
     {
         moneyCount += moneyChange;
@@ -127,7 +146,7 @@ public class UIMenager : MonoBehaviour
         #region UpgradesPanel
 
         //Current Upgrade on Path 1
-        sb.AppendFormat("Lvl {0}\nPath 1", _tower.path1Lv);
+        sb.AppendFormat("Path 1\nLvl {0}", _tower.path1Lv);
         path1Info.text = sb.ToString();
         sb.Clear();
         if (GiveUpgradeIcon(_tower.towerName, 1, _tower.path1Lv) != null)
@@ -175,7 +194,7 @@ public class UIMenager : MonoBehaviour
         }
 
         //Current Upgrade on Path 2
-        sb.AppendFormat("Lvl {0}\nPath 2", _tower.path2Lv);
+        sb.AppendFormat("Path 2\nLvl {0}", _tower.path2Lv);
         path2Info.text = sb.ToString();
         sb.Clear();
         if (GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv) != null)
@@ -563,6 +582,27 @@ public class UIMenager : MonoBehaviour
                 }
             default:
                 return -3;
+        }
+    }
+
+    public int GiveTowerCost(TowerTypes towerType)
+    {
+        switch (towerType)
+        {
+            case TowerTypes.DartMonkey:
+                return GameBox.instance.dataBase.towerBuyCost.dartMonkey;
+            case TowerTypes.TackShooter:
+                return GameBox.instance.dataBase.towerBuyCost.tackShooter;
+            case TowerTypes.BombSooter:
+                return GameBox.instance.dataBase.towerBuyCost.bombShooter;
+            case TowerTypes.IceTower:
+                return GameBox.instance.dataBase.towerBuyCost.iceTower;
+            case TowerTypes.GlueMonkey:
+                return GameBox.instance.dataBase.towerBuyCost.glueMonkey;
+            case TowerTypes.MonkeyBuccaneer:
+                return GameBox.instance.dataBase.towerBuyCost.monkeyBuccaneer;
+            default:
+                return -1;
         }
     }
 
