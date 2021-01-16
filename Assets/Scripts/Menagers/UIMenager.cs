@@ -66,9 +66,6 @@ public class UIMenager : MonoBehaviour
 
     }
 
-    private void Start()
-    {
-    }
 
     private void Update()
     {

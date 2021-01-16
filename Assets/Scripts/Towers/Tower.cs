@@ -32,10 +32,10 @@ public class Tower : MonoBehaviour
     protected UIMenager UIMenager;
     protected GameObject target;
     protected bool bloonInRange = false;
-    protected bool seeableBloonInRange = false;
+    protected bool bloonInRangeIsSeeable = false;
     protected bool isSearchCorutine = false;
     protected bool isAttackCorutine = false;
-    LayerMask BloonsMask;
+    protected LayerMask BloonsMask;
 
     public int path1Lv { protected set; get; } = 0;
     public int path2Lv { protected set; get; } = 0;
@@ -58,14 +58,14 @@ public class Tower : MonoBehaviour
             StartCoroutine(TowerSearch());
             isSearchCorutine = true;
         }
-        if (bloonInRange && isAttackCorutine == false && seeableBloonInRange)
+        if (bloonInRange && isAttackCorutine == false && bloonInRangeIsSeeable)
         {
             StartCoroutine(TowerAttack());
             isAttackCorutine = true;
         }
 
         //Obracanie samej wierzy w kierunku targetowanego bloona
-        if (bloonInRange && seeableBloonInRange)
+        if (bloonInRange && bloonInRangeIsSeeable)
         {
             transform.up = transform.position - target.transform.position;
         }
@@ -100,7 +100,7 @@ public class Tower : MonoBehaviour
         float leastDistanceToWaypoint = 999999;
         while (bloonInRange)
         {
-            seeableBloonInRange = false;
+            bloonInRangeIsSeeable = false;
             foreach (Collider2D bloonCollider in Physics2D.OverlapCircleAll(transform.position, range, BloonsMask, 0, 0))
             {
                 //!!! Optymalizuj, ale jak?? : włąsny Collider2D, który zapisuje odrazu kalsy Bloon
@@ -108,7 +108,7 @@ public class Tower : MonoBehaviour
                 {
                     if (bloonObject.isCammo == false || canSeeCamo)
                     {
-                        seeableBloonInRange = true;
+                        bloonInRangeIsSeeable = true;
                         if (bloonObject.myNextWaypoint > biggestNextWaypoint)
                         {
                             biggestNextWaypoint = bloonObject.myNextWaypoint;

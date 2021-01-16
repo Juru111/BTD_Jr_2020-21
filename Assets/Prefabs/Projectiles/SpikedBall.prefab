@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6611216060346936435}
   - component: {fileID: 6611216060346936433}
   - component: {fileID: 6611216060346936431}
-  - component: {fileID: 2899174639223738790}
+  - component: {fileID: 7754113003133613074}
   m_Layer: 9
   m_Name: SpikedBall
   m_TagString: Untagged
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2899174639223738790
+--- !u!114 &7754113003133613074
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6611216060346936436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ccde13118af344db443da8e25097dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ad01e89fa349474eb1641d5a2b93a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   projectileName: 2

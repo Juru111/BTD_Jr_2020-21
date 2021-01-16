@@ -36,6 +36,7 @@ public class DartMonkey : Tower
         projectilePierce += 82;
         projectileType = ProjectileTypes.BigSpikedBall;
     }
+
     protected override void Path2toLv1()
     {
         projectilePierce += 1;

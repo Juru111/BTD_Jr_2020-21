@@ -32,16 +32,16 @@ public class WavesMenager : MonoBehaviour
                 GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, true, false, null);
                 yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(0.5f);
             for (int j = 0; j < 5; j++)
             {
                 BloonTypes bloonType = (BloonTypes)i;
                 GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
                 yield return new WaitForSeconds(0.5f);
             }
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
         }
-        yield return new WaitForSeconds(60);
+        yield return new WaitForSeconds(10);
         for (int i = 1; i < 100; i++)
         {
             BloonTypes bloonType = (BloonTypes)Random.Range(1, 10);

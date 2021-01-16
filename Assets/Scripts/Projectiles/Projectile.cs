@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected ProjectileTypes projectileName;
     protected int popCountLeft = 1;
-    [SerializeField]
     protected int power = 1;
     protected float movementSpeed = 5;
     protected float rotationAngle;
@@ -27,10 +26,10 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        CalculateProjectileData();
+        CalculateInitialProjectileData();
     }
 
-    protected virtual void CalculateProjectileData()
+    protected virtual void CalculateInitialProjectileData()
     {
         rangeLeft = range;
 
@@ -54,7 +53,7 @@ public class Projectile : MonoBehaviour
         range = _range;
         canHitCamo = _canHitCamo;
 
-        CalculateProjectileData();
+        CalculateInitialProjectileData();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

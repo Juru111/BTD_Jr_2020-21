@@ -116,7 +116,7 @@ public class PoolingMenager : MonoBehaviour
         else //jeśli jest za mało obiektów w pamięci
         {
             //dospawnowuje w Kolejkę zapas
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 100; i++)
             {
                 if(bloonName == BloonTypes.White)
                 { bloonNrInList = 10; }
@@ -163,7 +163,7 @@ public class PoolingMenager : MonoBehaviour
         else //jeśli jest za mało obiektów w pamięci
         {
             //dospawnowuje w Kolejkę zapas
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 100; i++)
             {
                 GameObject projectile = Instantiate(projectileTypeInfos[(int)projectileName - 1].prefab, projectilesAnchor);
                 projectile.SetActive(false);
