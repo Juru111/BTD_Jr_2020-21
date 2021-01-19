@@ -10,7 +10,6 @@ public class Exposion : Projectile
     protected override void Start()
     {
         base.Start();
-        //popCountLeft nie jest używany według nazwy, jest dla przekazania informacji o zwiękrzonym zasięgu bomby 
         transform.DOScale(Vector3.one * explosionRangeModifier, 0.1f);
     }
     protected override void CalculateInitialProjectileData()
@@ -21,7 +20,7 @@ public class Exposion : Projectile
         {
             explosionRangeModifier = 1.5f;
         }
-        transform.localScale = Vector3.zero;//new Vector3(0.9f, 0.9f, 0.9f);
+        transform.localScale = Vector3.zero;
     }
 
     protected override void ProjectileAction(Bloon bloonComponent)

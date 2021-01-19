@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
     protected bool canHitCamo;
 
     protected float spriteRotationAngle;
-    [SerializeField]
     protected Rigidbody2D myRigidbody2D;
 
     protected virtual void Awake()

@@ -6,15 +6,15 @@ public class BombShooter : Tower
 {
     protected override void Path1toLv1()
     {
-
+        AddRefreshRange(100);
     }
     protected override void Path1toLv2()
     {
-
+        projectileType = ProjectileTypes.BombDarts;
     }
     protected override void Path1toLv3()
     {
-
+        projectileType = ProjectileTypes.BombBombs;
     }
     protected override void Path1toLv4()
     {

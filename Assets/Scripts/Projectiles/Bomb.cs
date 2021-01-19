@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bomb : Projectile
 {
-    private bool neverInteracted = true;
+    protected bool neverInteracted = true;
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,8 +13,13 @@ public class Bomb : Projectile
             neverInteracted)
         {
             neverInteracted = false;
-            GameBox.instance.poolingMenager.SummonProjectile(ProjectileTypes.Explosion, transform.position, popCountLeft, power, movementSpeed, rotationAngle, range, canHitCamo);
-            GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
+            BombAction();
         }
+    }
+
+    protected virtual void BombAction()
+    {
+        GameBox.instance.poolingMenager.SummonProjectile(ProjectileTypes.Explosion, transform.position, popCountLeft, power, movementSpeed, rotationAngle, range, canHitCamo);
+        GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
     }
 }

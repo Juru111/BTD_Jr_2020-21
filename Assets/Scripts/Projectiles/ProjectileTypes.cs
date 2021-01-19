@@ -10,6 +10,8 @@
     Blade = 6,
     Bomb = 7,
     Explosion = 8,
+    BombDarts = 9,
+    BombBombs = 10,
     Glue,
     FreezingPulse,
     DamagingPulse
