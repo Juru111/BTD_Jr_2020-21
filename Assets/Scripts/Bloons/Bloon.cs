@@ -19,7 +19,7 @@ public class Bloon : MonoBehaviour
     [field: SerializeField]
     public float distanceToWaypoint { get; protected set; }
     [field: SerializeField]
-    public GameObject parentPopProjectle { get; protected set; } = null;
+    public List<GameObject> parentPopProjectles { get; protected set; }
     #endregion
 
     [SerializeField]
@@ -29,6 +29,7 @@ public class Bloon : MonoBehaviour
     [SerializeField]
     protected GameObject cammoSpriteObject;
     protected SpriteRenderer mySpriteRenderer;
+    public bool neverLayerPoped { get; protected set; } = true;
 
     protected virtual void Awake()
     {
@@ -37,6 +38,11 @@ public class Bloon : MonoBehaviour
         //które leprze? i dlaczego to drugie nie działa (w Starcie)
         mySpriteRenderer = GetComponent<SpriteRenderer>(); //przydaje się też w Ceramic Bloon
         cammoSpriteObject.GetComponent<SpriteRenderer>().sortingOrder = mySpriteRenderer.sortingOrder + 1;
+    }
+
+    protected virtual void OnEnable()
+    {
+        
     }
 
     protected virtual void Update()
@@ -102,30 +108,37 @@ public class Bloon : MonoBehaviour
         isCammo = _isCammo;
         cammoSpriteObject.SetActive(isCammo);
         isRegrow = _isRegrow;
-        parentPopProjectle = _parentPopProjectle;
+        if(_parentPopProjectle)
+        {
+            parentPopProjectles.Add(_parentPopProjectle);
+        }
 
         if(layersLeft < (int)bloonName % 100)
         {
-            LayerPop(0, parentPopProjectle);
+            LayerPop(0, null);
         }
     }
 
     public virtual void LayerPop(int power, GameObject parentPopProjectle)
     {
-        GameBox.instance.poolingMenager.SummonPop(transform.position);
-
-        if(bloonName != BloonTypes.Red)
+        if (neverLayerPoped)
         {
-            BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-            GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
-        }
-        else
-        {
-            //Debug.Log("Red dead");
-        }
+            neverLayerPoped = false;
+            GameBox.instance.poolingMenager.SummonPop(transform.position);
 
-        uiMenaner.ChangeMoneyBalance(1);
-        GameBox.instance.poolingMenager.ReturnBloon(gameObject, bloonName);
+            if (bloonName != BloonTypes.Red)
+            {
+                BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
+                GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+            }
+            else
+            {
+                //Debug.Log("Red dead");
+            }
+
+            uiMenaner.ChangeMoneyBalance(1);
+            GameBox.instance.poolingMenager.ReturnBloon(gameObject, bloonName);
+        }
     }
 
 

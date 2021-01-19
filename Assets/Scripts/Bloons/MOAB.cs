@@ -12,7 +12,7 @@ public class MOAB : Bloon
         if (healthPointsLeft > power)
         {
             healthPointsLeft -= power;
-            parentPopProjectle = _parentPopProjectle;
+            parentPopProjectles.Add(_parentPopProjectle);
             GameBox.instance.poolingMenager.SummonPop(transform.position);
         }
         else

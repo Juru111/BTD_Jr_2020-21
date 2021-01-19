@@ -58,9 +58,10 @@ public class Projectile : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Bloon bloonComponent) &&
-            gameObject != bloonComponent.parentPopProjectle &&
+            !(bloonComponent.parentPopProjectles.Contains( gameObject)) &&
             popCountLeft > 0 &&
-            (bloonComponent.isCammo == false || canHitCamo))
+            (bloonComponent.isCammo == false || canHitCamo) &&
+            bloonComponent.neverLayerPoped)
         {
             ProjectileAction(bloonComponent);
         }

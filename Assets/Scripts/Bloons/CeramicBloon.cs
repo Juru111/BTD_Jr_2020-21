@@ -26,13 +26,13 @@ public class CeramicBloon : DoubleBloon
                 base.LayerPop(-healthPointsLeft + 1, _parentPopProjectle);
             }
         }
-        //w pozostałych ("normalnych") przypadkach
+        //w pozostałych "normalnych" przypadkach
         else
         {
             if (healthPointsLeft > power)
             {
                 healthPointsLeft -= power;
-                parentPopProjectle = _parentPopProjectle;
+                parentPopProjectles.Add(_parentPopProjectle);
                 GameBox.instance.poolingMenager.SummonPop(transform.position);
             }
             else
