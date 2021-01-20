@@ -3,7 +3,7 @@
     NONE,
     DartMonkey,
     TackShooter,
-    BombSooter,
+    BombShooter,
     IceTower,
     GlueMonkey,
     MonkeyBuccaneer

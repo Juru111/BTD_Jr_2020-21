@@ -22,6 +22,17 @@ public class UIMenager : MonoBehaviour
     [SerializeField]
     private TMP_Text towerNameText;
 
+    [Space]
+    [SerializeField]
+    private Button startButton;
+    [SerializeField]
+    private TMP_Text startButtonText;
+    [SerializeField]
+    private TMP_Text roundCount;
+
+    //uleprzenia
+    private Tower selectedTower;
+    [Space]
     [SerializeField]
     private TMP_Text path1Info;
     [SerializeField]
@@ -30,6 +41,8 @@ public class UIMenager : MonoBehaviour
     private TMP_Text path1BuyInfo;
     [SerializeField]
     private Image path1ToBuy;
+    private Button path1Button;
+
     [SerializeField]
     private TMP_Text path2Info;
     [SerializeField]
@@ -38,8 +51,9 @@ public class UIMenager : MonoBehaviour
     private TMP_Text path2BuyInfo;
     [SerializeField]
     private Image path2ToBuy;
+    private Button path2Button;
 
-    
+
     //[System.Serializable]
     //public class Path1
     //{
@@ -49,10 +63,7 @@ public class UIMenager : MonoBehaviour
     //private Image ToBuy;
     //}
 
-    private Button path1Button;
-    private Button path2Button;
 
-    private Tower selectedTower;
 
 
     void Awake()
@@ -252,6 +263,19 @@ public class UIMenager : MonoBehaviour
         #endregion
     }
 
+    public void StartNextRoundOnUI(int roundIndex)
+    {
+        startButton.interactable = false;
+        startButtonText.text = "Round in\nprocess...";
+        roundCount.text = roundIndex.ToString();
+    }
+
+    public void FinishRoundOnUI()
+    {
+        startButton.interactable = true;
+        startButtonText.text = "Start\nRound";
+    }
+
     private Sprite GiveUpgradeIcon(TowerTypes towerType, int path, int Lv)
     {
         switch (towerType)
@@ -310,7 +334,7 @@ public class UIMenager : MonoBehaviour
                 {
                     return null;
                 }
-            case TowerTypes.BombSooter:
+            case TowerTypes.BombShooter:
                 if (path == 1)
                 {
                     switch (Lv)
@@ -481,7 +505,7 @@ public class UIMenager : MonoBehaviour
                 {
                     return -2;
                 }
-            case TowerTypes.BombSooter:
+            case TowerTypes.BombShooter:
                 if (path == 1)
                 {
                     switch (Lv)
@@ -602,7 +626,7 @@ public class UIMenager : MonoBehaviour
                 return GameBox.instance.dataBase.towerBuyCost.dartMonkey;
             case TowerTypes.TackShooter:
                 return GameBox.instance.dataBase.towerBuyCost.tackShooter;
-            case TowerTypes.BombSooter:
+            case TowerTypes.BombShooter:
                 return GameBox.instance.dataBase.towerBuyCost.bombShooter;
             case TowerTypes.IceTower:
                 return GameBox.instance.dataBase.towerBuyCost.iceTower;
@@ -621,7 +645,7 @@ public class UIMenager : MonoBehaviour
         {
             case TowerTypes.DartMonkey: return "Dart Monkey";
             case TowerTypes.TackShooter: return "Tack Shooter";
-            case TowerTypes.BombSooter: return "Bomb Sooter";
+            case TowerTypes.BombShooter: return "Bomb Shooter";
             case TowerTypes.IceTower: return "Ice Tower";
             case TowerTypes.GlueMonkey: return "Glue Monkey";
             case TowerTypes.MonkeyBuccaneer: return "Monkey Buccaneer";

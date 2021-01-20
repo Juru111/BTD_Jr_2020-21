@@ -6,15 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
-    public TowerBuyCost towerBuyCost;
-
-    public UpgradesData dartMonkey;
-    public UpgradesData tackShooter;
-    public UpgradesData bombShooter;
-    public UpgradesData iceTower;
-    public UpgradesData glueMonkey;
-    public UpgradesData monkeyBuccaneer;
-
+    //koszty oraz ilony uleprzeń małp
     [System.Serializable]
     public class UpgradesData
     {
@@ -38,6 +30,14 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public int Path2LvL3Cost { get; private set; }
         [field: SerializeField] public int Path2LvL4Cost { get; private set; }
     }
+    public UpgradesData dartMonkey;
+    public UpgradesData tackShooter;
+    public UpgradesData bombShooter;
+    public UpgradesData iceTower;
+    public UpgradesData glueMonkey;
+    public UpgradesData monkeyBuccaneer;
+
+    //koszty małp
     [System.Serializable]
     public class TowerBuyCost
     {
@@ -48,5 +48,25 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public int glueMonkey { get; private set; }
         [field: SerializeField] public int monkeyBuccaneer { get; private set; }
     }
+    public TowerBuyCost towerBuyCost;
+
+    //rundy
+    [System.Serializable]
+    public class RoundPiece
+    {
+        public BloonTypes bloonName;
+        public bool isCammo;
+        public int count;
+        public float bloonSpaceing;
+        public float pieceSpaceing;
+    }
+    [System.Serializable]
+    public class Round
+    {
+        public List<RoundPiece> piece;
+        public string rbeInfo;
+    }
+    [SerializeField]
+    public List<Round> round;
 
 }
