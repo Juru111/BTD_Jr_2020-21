@@ -21,9 +21,9 @@ public class MOAB : Bloon
             Vector3 backDirection = transform.position - GameBox.instance.waypoints[myNextWaypoint].position;
             power -= healthPointsLeft;
             //summonowanie dodatkowych bloonów
-            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position +     spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint +     spacing, isCammo, isRegrow, _parentPopProjectle);
-            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 2 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 2 * spacing, isCammo, isRegrow, _parentPopProjectle);
-            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 3 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 3 * spacing, isCammo, isRegrow, _parentPopProjectle);
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position +     spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint +     spacing, isCammo, stunDurationLeft, parentPopProjectles);
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 2 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 2 * spacing, isCammo, stunDurationLeft, parentPopProjectles);
+            GameBox.instance.poolingMenager.SummonBloon(BloonTypes.Ceramic, layersLeft - (power + 1), transform.position + 3 * spacing * backDirection.normalized, myNextWaypoint, distanceToWaypoint + 3 * spacing, isCammo, stunDurationLeft, parentPopProjectles);
 
             base.LayerPop(power + 1, _parentPopProjectle);
         }

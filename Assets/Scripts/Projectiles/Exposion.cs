@@ -7,11 +7,8 @@ public class Exposion : Projectile
 {
 
     private float explosionRangeModifier = 1;
-    protected override void Start()
-    {
-        base.Start();
-        transform.DOScale(Vector3.one * explosionRangeModifier, 0.1f);
-    }
+    protected bool canPopBlack = false;
+
     protected override void CalculateInitialProjectileData()
     {
         movementSpeed = 1;
@@ -20,12 +17,21 @@ public class Exposion : Projectile
         {
             explosionRangeModifier = 1.5f;
         }
+        else if (popCountLeft == 40)
+        {
+            explosionRangeModifier = 1;
+        }
+        else if (popCountLeft < 40)
+        {
+            explosionRangeModifier = 0.6f;
+        }
         transform.localScale = Vector3.zero;
+        transform.DOScale(Vector3.one * explosionRangeModifier, 0.1f);
     }
 
     protected override void ProjectileAction(Bloon bloonComponent)
     {
-        if (bloonComponent.bloonName != BloonTypes.Black && bloonComponent.bloonName != BloonTypes.Zebra)
+        if (canPopBlack || (bloonComponent.bloonName != BloonTypes.Black && bloonComponent.bloonName != BloonTypes.Zebra))
         {
             base.ProjectileAction(bloonComponent);
         }

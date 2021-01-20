@@ -26,7 +26,7 @@ public class PoolingMenager : MonoBehaviour
     {
         public ProjectileTypes name;
         public GameObject prefab;
-        public int startSize;
+        public int startSize = 50;
     }
     [SerializeField]
     private Transform projectilesAnchor;
@@ -98,7 +98,7 @@ public class PoolingMenager : MonoBehaviour
     }
 
     public void SummonBloon(BloonTypes bloonName, int layersLeft, Vector3 position ,int myNextWaypoint,
-                            float distanceToWaypoint, bool isCammo, bool isRegrow, GameObject parentPopProjectle)
+                            float distanceToWaypoint, bool isCammo, float stunDurationLeft, List<GameObject> parentPopProjectles)
     {
         if (bloonTypesDictionary[bloonName.ToString()].Count > 0)
         {
@@ -107,7 +107,7 @@ public class PoolingMenager : MonoBehaviour
 
             if(bloonToSummon.TryGetComponent<Bloon>(out Bloon bloonComponent))
             {
-                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, parentPopProjectles);
             }
             else
             { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }
@@ -136,7 +136,7 @@ public class PoolingMenager : MonoBehaviour
 
             if (bloonToSummon.TryGetComponent<Bloon>(out Bloon bloonComponent))
             {
-                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, parentPopProjectles);
             }
             else
             { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }

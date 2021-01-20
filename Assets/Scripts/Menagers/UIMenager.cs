@@ -227,6 +227,7 @@ public class UIMenager : MonoBehaviour
             sb.Clear();
         }
         
+        //wstawanie odpowiednich ikon
         if ((_tower.path1Lv > 2 && _tower.path2Lv > 1) || GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv + 1) == null)
         {
             path2ToBuy.enabled = false;
@@ -237,6 +238,17 @@ public class UIMenager : MonoBehaviour
             path2ToBuy.sprite = GiveUpgradeIcon(_tower.towerName, 2, _tower.path2Lv + 1);
         }
 
+
+        //następujący kod jest ukrywaniem upeprzenia 4 poziomu na 2 path-u - czasowe (bądź nie) rozwiązanie
+        if(_tower.path2Lv == 3)
+        {
+            path2Button.interactable = false;
+            sb.AppendFormat("Maxed");
+            path2BuyInfo.text = sb.ToString();
+            sb.Clear();
+
+            path2ToBuy.enabled = false;
+        }
         #endregion
     }
 

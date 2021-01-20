@@ -13,7 +13,7 @@ public class ZebraBloon : Bloon
         Vector3 backDirection = transform.position - GameBox.instance.waypoints[myNextWaypoint].position;
         Vector3 anotherBloonPosition = transform.position + spacing * backDirection.normalized;
         //summonowanie białego bloona
-        GameBox.instance.poolingMenager.SummonBloon(BloonTypes.White, layersLeft - power, anotherBloonPosition, myNextWaypoint, distanceToWaypoint + spacing, isCammo, isRegrow, parentPopProjectle);
+        GameBox.instance.poolingMenager.SummonBloon(BloonTypes.White, layersLeft - power, anotherBloonPosition, myNextWaypoint, distanceToWaypoint + spacing, isCammo, stunDurationLeft, parentPopProjectles);
 
         base.LayerPop(power, parentPopProjectle);
     }

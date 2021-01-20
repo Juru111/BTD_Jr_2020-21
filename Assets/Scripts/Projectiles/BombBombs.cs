@@ -8,8 +8,8 @@ public class BombBombs : Bomb
     {
         for (int i = 0; i < 8; i++)
         {
-            GameBox.instance.poolingMenager.SummonProjectile(ProjectileTypes.Bomb, transform.position,
-                                                            10, 1, movementSpeed * 1.5f, i * 45, range, canHitCamo);
+            GameBox.instance.poolingMenager.SummonProjectile(ProjectileTypes.BombFullRange, transform.position,
+                                                            popCountLeft/8, 1, movementSpeed * 0.4f, i * 45, range/3, canHitCamo);
         }
 
         base.BombAction();

@@ -5,6 +5,13 @@ using UnityEngine;
 public class Bomb : Projectile
 {
     protected bool neverInteracted = true;
+    [SerializeField]
+    protected ProjectileTypes ExploisonType = ProjectileTypes.Explosion;
+
+    protected virtual void OnEnable()
+    {
+        neverInteracted = true;
+    }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,7 +26,7 @@ public class Bomb : Projectile
 
     protected virtual void BombAction()
     {
-        GameBox.instance.poolingMenager.SummonProjectile(ProjectileTypes.Explosion, transform.position, popCountLeft, power, movementSpeed, rotationAngle, range, canHitCamo);
+        GameBox.instance.poolingMenager.SummonProjectile(ExploisonType, transform.position, popCountLeft, power, movementSpeed, rotationAngle, range, canHitCamo);
         GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
     }
 }

@@ -13,7 +13,7 @@ public class Bloon : MonoBehaviour
     [field: SerializeField]
     public bool isCammo { protected set; get; }
     [SerializeField]
-    protected bool isRegrow;
+    protected float stunDurationLeft; 
     [field: SerializeField]
     public int myNextWaypoint { get; protected set; } = 0;
     [field: SerializeField]
@@ -24,6 +24,7 @@ public class Bloon : MonoBehaviour
 
     [SerializeField]
     protected float movementSpeed = 3.5f;
+    protected float baseMovementSpeed;
     [SerializeField]
     protected UIMenager uiMenaner;
     [SerializeField]
@@ -34,13 +35,13 @@ public class Bloon : MonoBehaviour
     protected virtual void Awake()
     {
         uiMenaner = FindObjectOfType<UIMenager>();
-        //GameBox.instance.GameMenager;
-        //które leprze? i dlaczego to drugie nie działa (w Starcie)
         mySpriteRenderer = GetComponent<SpriteRenderer>(); //przydaje się też w Ceramic Bloon
         cammoSpriteObject.GetComponent<SpriteRenderer>().sortingOrder = mySpriteRenderer.sortingOrder + 1;
+        baseMovementSpeed = movementSpeed;
+        parentPopProjectles = new List<GameObject>();
     }
 
-    protected virtual void OnEnable()
+    protected virtual void Start()
     {
         
     }
@@ -98,7 +99,7 @@ public class Bloon : MonoBehaviour
     }
 
     public virtual void SetMe(BloonTypes _bloonName, int _layersLeft, Vector3 _position, int _myNextWayPoint,
-                                float _distanceToWaypoint, bool _isCammo, bool _isRegrow, GameObject _parentPopProjectle)
+                                float _distanceToWaypoint, bool _isCammo, float _stunDurationLeft, List<GameObject> _parentPopProjectles)
     {
         bloonName = _bloonName;
         layersLeft = _layersLeft;
@@ -107,13 +108,17 @@ public class Bloon : MonoBehaviour
         distanceToWaypoint = _distanceToWaypoint;
         isCammo = _isCammo;
         cammoSpriteObject.SetActive(isCammo);
-        isRegrow = _isRegrow;
-        if(_parentPopProjectle)
+        parentPopProjectles = _parentPopProjectles;
+        stunDurationLeft = _stunDurationLeft;
+        movementSpeed = baseMovementSpeed;
+        neverLayerPoped = true;
+        if (stunDurationLeft > 0)
         {
-            parentPopProjectles.Add(_parentPopProjectle);
+            StartCoroutine(Stun());
         }
 
-        if(layersLeft < (int)bloonName % 100)
+
+        if (layersLeft < (int)bloonName % 100)
         {
             LayerPop(0, null);
         }
@@ -129,7 +134,10 @@ public class Bloon : MonoBehaviour
             if (bloonName != BloonTypes.Red)
             {
                 BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
-                GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position, myNextWaypoint, distanceToWaypoint, isCammo, isRegrow, parentPopProjectle);
+                parentPopProjectles.Add(parentPopProjectle);
+                GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position,
+                                                            myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, parentPopProjectles);
+                
             }
             else
             {
@@ -141,6 +149,27 @@ public class Bloon : MonoBehaviour
         }
     }
 
+    public virtual void StunMe(float _duration)
+    {
+        if(isStunCorutine == false)
+        {
+            stunDurationLeft = _duration;
+            StartCoroutine(Stun());
+        }
+    }
 
+    protected bool isStunCorutine;
+    protected virtual IEnumerator Stun()
+    {
+        isStunCorutine = true;
+        movementSpeed = baseMovementSpeed*0.001f;
+        while (stunDurationLeft > 0)
+        {
+            stunDurationLeft -= Time.deltaTime;
+            yield return null;
+        }
+        movementSpeed = baseMovementSpeed;
+        isStunCorutine = false;
+    }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WavesMenager : MonoBehaviour
 {
-
+    private List<GameObject> EmptyList;
     private Vector3 startPoint;
 
     void Start()
@@ -29,14 +29,14 @@ public class WavesMenager : MonoBehaviour
             for (int j = 0; j < 5; j++)
             {
                 BloonTypes bloonType = (BloonTypes)i;
-                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, true, false, null);
+                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, true, 0, new List<GameObject>());
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(0.5f);
             for (int j = 0; j < 5; j++)
             {
                 BloonTypes bloonType = (BloonTypes)i;
-                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
+                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, 0, new List<GameObject>());
                 yield return new WaitForSeconds(0.5f);
             }
             yield return new WaitForSeconds(1);
@@ -45,7 +45,7 @@ public class WavesMenager : MonoBehaviour
         for (int i = 1; i < 100; i++)
         {
             BloonTypes bloonType = (BloonTypes)Random.Range(1, 10);
-            GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, false, null);
+            GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, 0, new List<GameObject>());
             yield return new WaitForSeconds(0.2f);
         }
 

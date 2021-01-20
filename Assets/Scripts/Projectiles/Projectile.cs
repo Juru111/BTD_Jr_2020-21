@@ -84,8 +84,12 @@ public class Projectile : MonoBehaviour
         rangeLeft -= Time.deltaTime * movementSpeed;
         if (rangeLeft <= 0)
         {
-            GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
+            HandleMaxRange();
         }
     }
 
+    protected virtual void HandleMaxRange()
+    {
+        GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
+    }
 }
