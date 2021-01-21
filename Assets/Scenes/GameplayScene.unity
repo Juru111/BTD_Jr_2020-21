@@ -4030,11 +4030,11 @@ MonoBehaviour:
   - name: 1
     prefab: {fileID: 5468768491692010373, guid: 0199cc9c00fccd349b6e71d25e7bff53,
       type: 3}
-    startSize: 100
+    startSize: 200
   - name: 2
     prefab: {fileID: 3069777856683367079, guid: d986b9ac19a45f84699ba720eb600f69,
       type: 3}
-    startSize: 100
+    startSize: 200
   - name: 3
     prefab: {fileID: 3069777856683367079, guid: fa2f0aa906c1cc346ba66f9d4da8fec6,
       type: 3}

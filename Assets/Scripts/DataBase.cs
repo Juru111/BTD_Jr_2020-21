@@ -62,7 +62,7 @@ public class DataBase : ScriptableObject
         public BloonTypes bloonName;
         public bool isCammo;
         public int count;
-        public float bloonSpaceing;
+        public float bloonSpaceing = 1;
         public float pieceSpaceing;
     }
     [System.Serializable]
