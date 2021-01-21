@@ -7,6 +7,7 @@ using UnityEngine;
 public class DataBase : ScriptableObject
 {
     //koszty oraz ilony uleprzeń małp
+    #region LevelUps
     [System.Serializable]
     public class UpgradesData
     {
@@ -36,8 +37,10 @@ public class DataBase : ScriptableObject
     public UpgradesData iceTower;
     public UpgradesData glueMonkey;
     public UpgradesData monkeyBuccaneer;
+    #endregion
 
     //koszty małp
+    #region Costs
     [System.Serializable]
     public class TowerBuyCost
     {
@@ -49,8 +52,10 @@ public class DataBase : ScriptableObject
         [field: SerializeField] public int monkeyBuccaneer { get; private set; }
     }
     public TowerBuyCost towerBuyCost;
+    #endregion
 
     //rundy
+    #region Rounds
     [System.Serializable]
     public class RoundPiece
     {
@@ -63,10 +68,10 @@ public class DataBase : ScriptableObject
     [System.Serializable]
     public class Round
     {
-        public List<RoundPiece> piece;
+        public List<RoundPiece> pieces;
         public string rbeInfo;
     }
     [SerializeField]
-    public List<Round> round;
-
+    public List<Round> rounds;
+    #endregion
 }

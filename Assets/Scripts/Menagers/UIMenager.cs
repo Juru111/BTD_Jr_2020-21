@@ -7,6 +7,7 @@ using TMPro;
 
 public class UIMenager : MonoBehaviour
 {
+    //HP i życia
     [SerializeField]
     private TMP_Text moneyDisplay;
     [SerializeField]
@@ -16,22 +17,33 @@ public class UIMenager : MonoBehaviour
     [SerializeField]
     private int hpCount;
 
-    [Space]
-    [SerializeField]
-    private GameObject upgradePanel;
-    [SerializeField]
-    private TMP_Text towerNameText;
-
+    //Start button
     [Space]
     [SerializeField]
     private Button startButton;
     [SerializeField]
     private TMP_Text startButtonText;
+
+    //Rounds info
+    [Space]
+    [SerializeField]
+    private int roundReward;
     [SerializeField]
     private TMP_Text roundCount;
+    [SerializeField]
+    private TMP_Text roundRbeInfo;
+    [SerializeField]
+    private TMP_Text maxRoundCount;
+    private int maxRound;
 
     //uleprzenia
+    [Space]
+    [SerializeField]
+    private GameObject upgradePanel;
+    [SerializeField]
+    private TMP_Text towerNameText;
     private Tower selectedTower;
+
     [Space]
     [SerializeField]
     private TMP_Text path1Info;
@@ -42,7 +54,8 @@ public class UIMenager : MonoBehaviour
     [SerializeField]
     private Image path1ToBuy;
     private Button path1Button;
-
+    
+    [Space]
     [SerializeField]
     private TMP_Text path2Info;
     [SerializeField]
@@ -63,7 +76,7 @@ public class UIMenager : MonoBehaviour
     //private Image ToBuy;
     //}
 
-
+    private DataBase dataBase;
 
 
     void Awake()
@@ -75,6 +88,16 @@ public class UIMenager : MonoBehaviour
         path1Button = path1BuyInfo.transform.parent.gameObject.GetComponent<Button>();
         path2Button = path2BuyInfo.transform.parent.gameObject.GetComponent<Button>();
 
+        dataBase = GameBox.instance.dataBase;
+    }
+
+    private void Start()
+    {
+        maxRound = GameBox.instance.dataBase.rounds.Count - 1;
+
+        roundCount.text = "1";
+        maxRoundCount.text = maxRound.ToString();
+        roundRbeInfo.text = GameBox.instance.dataBase.rounds[1].rbeInfo;
     }
 
 
@@ -263,17 +286,34 @@ public class UIMenager : MonoBehaviour
         #endregion
     }
 
-    public void StartNextRoundOnUI(int roundIndex)
+    public void StartNextRoundOnUI()
     {
         startButton.interactable = false;
         startButtonText.text = "Round in\nprocess...";
-        roundCount.text = roundIndex.ToString();
     }
 
-    public void FinishRoundOnUI()
+    public void FinishRoundOnUI(int nextRoundIndex, string nextRoundRbeInfo)
     {
+        RoundReward();
+
         startButton.interactable = true;
         startButtonText.text = "Start\nRound";
+        roundCount.text = nextRoundIndex.ToString();
+        roundRbeInfo.text = nextRoundRbeInfo;
+    }
+
+    public void ShowWin()
+    {
+        RoundReward();
+
+        Debug.Log("WinPop-up");
+        startButtonText.text = "Goal\nAchieved";
+    }
+
+    private void RoundReward()
+    {
+        ChangeMoneyBalance(roundReward);
+        roundReward++;
     }
 
     private Sprite GiveUpgradeIcon(TowerTypes towerType, int path, int Lv)
@@ -285,10 +325,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartMonkey.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.dartMonkey.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.dartMonkey.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.dartMonkey.Path1LvL4;
+                        case 1: return dataBase.dartMonkey.Path1LvL1;
+                        case 2: return dataBase.dartMonkey.Path1LvL2;
+                        case 3: return dataBase.dartMonkey.Path1LvL3;
+                        case 4: return dataBase.dartMonkey.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -296,10 +336,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartMonkey.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.dartMonkey.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.dartMonkey.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.dartMonkey.Path2LvL4;
+                        case 1: return dataBase.dartMonkey.Path2LvL1;
+                        case 2: return dataBase.dartMonkey.Path2LvL2;
+                        case 3: return dataBase.dartMonkey.Path2LvL3;
+                        case 4: return dataBase.dartMonkey.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -312,10 +352,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.tackShooter.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.tackShooter.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.tackShooter.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.tackShooter.Path1LvL4;
+                        case 1: return dataBase.tackShooter.Path1LvL1;
+                        case 2: return dataBase.tackShooter.Path1LvL2;
+                        case 3: return dataBase.tackShooter.Path1LvL3;
+                        case 4: return dataBase.tackShooter.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -323,10 +363,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.tackShooter.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.tackShooter.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.tackShooter.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.tackShooter.Path2LvL4;
+                        case 1: return dataBase.tackShooter.Path2LvL1;
+                        case 2: return dataBase.tackShooter.Path2LvL2;
+                        case 3: return dataBase.tackShooter.Path2LvL3;
+                        case 4: return dataBase.tackShooter.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -339,10 +379,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.bombShooter.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.bombShooter.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.bombShooter.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.bombShooter.Path1LvL4;
+                        case 1: return dataBase.bombShooter.Path1LvL1;
+                        case 2: return dataBase.bombShooter.Path1LvL2;
+                        case 3: return dataBase.bombShooter.Path1LvL3;
+                        case 4: return dataBase.bombShooter.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -350,10 +390,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.bombShooter.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.bombShooter.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.bombShooter.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.bombShooter.Path2LvL4;
+                        case 1: return dataBase.bombShooter.Path2LvL1;
+                        case 2: return dataBase.bombShooter.Path2LvL2;
+                        case 3: return dataBase.bombShooter.Path2LvL3;
+                        case 4: return dataBase.bombShooter.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -366,10 +406,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.iceTower.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.iceTower.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.iceTower.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.iceTower.Path1LvL4;
+                        case 1: return dataBase.iceTower.Path1LvL1;
+                        case 2: return dataBase.iceTower.Path1LvL2;
+                        case 3: return dataBase.iceTower.Path1LvL3;
+                        case 4: return dataBase.iceTower.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -377,10 +417,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.iceTower.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.iceTower.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.iceTower.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.iceTower.Path2LvL4;
+                        case 1: return dataBase.iceTower.Path2LvL1;
+                        case 2: return dataBase.iceTower.Path2LvL2;
+                        case 3: return dataBase.iceTower.Path2LvL3;
+                        case 4: return dataBase.iceTower.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -393,10 +433,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.glueMonkey.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.glueMonkey.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.glueMonkey.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.glueMonkey.Path1LvL4;
+                        case 1: return dataBase.glueMonkey.Path1LvL1;
+                        case 2: return dataBase.glueMonkey.Path1LvL2;
+                        case 3: return dataBase.glueMonkey.Path1LvL3;
+                        case 4: return dataBase.glueMonkey.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -404,10 +444,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.glueMonkey.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.glueMonkey.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.glueMonkey.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.glueMonkey.Path2LvL4;
+                        case 1: return dataBase.glueMonkey.Path2LvL1;
+                        case 2: return dataBase.glueMonkey.Path2LvL2;
+                        case 3: return dataBase.glueMonkey.Path2LvL3;
+                        case 4: return dataBase.glueMonkey.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -420,10 +460,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL1;
-                        case 2: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL2;
-                        case 3: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL3;
-                        case 4: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL4;
+                        case 1: return dataBase.monkeyBuccaneer.Path1LvL1;
+                        case 2: return dataBase.monkeyBuccaneer.Path1LvL2;
+                        case 3: return dataBase.monkeyBuccaneer.Path1LvL3;
+                        case 4: return dataBase.monkeyBuccaneer.Path1LvL4;
                         default: return null;
                     }
                 }
@@ -431,10 +471,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL1;
-                        case 2: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL2;
-                        case 3: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL3;
-                        case 4: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL4;
+                        case 1: return dataBase.monkeyBuccaneer.Path2LvL1;
+                        case 2: return dataBase.monkeyBuccaneer.Path2LvL2;
+                        case 3: return dataBase.monkeyBuccaneer.Path2LvL3;
+                        case 4: return dataBase.monkeyBuccaneer.Path2LvL4;
                         default: return null;
                     }
                 }
@@ -456,10 +496,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartMonkey.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.dartMonkey.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.dartMonkey.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.dartMonkey.Path1LvL4Cost;
+                        case 1: return dataBase.dartMonkey.Path1LvL1Cost;
+                        case 2: return dataBase.dartMonkey.Path1LvL2Cost;
+                        case 3: return dataBase.dartMonkey.Path1LvL3Cost;
+                        case 4: return dataBase.dartMonkey.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -467,10 +507,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.dartMonkey.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.dartMonkey.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.dartMonkey.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.dartMonkey.Path2LvL4Cost;
+                        case 1: return dataBase.dartMonkey.Path2LvL1Cost;
+                        case 2: return dataBase.dartMonkey.Path2LvL2Cost;
+                        case 3: return dataBase.dartMonkey.Path2LvL3Cost;
+                        case 4: return dataBase.dartMonkey.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -483,10 +523,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.tackShooter.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.tackShooter.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.tackShooter.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.tackShooter.Path1LvL4Cost;
+                        case 1: return dataBase.tackShooter.Path1LvL1Cost;
+                        case 2: return dataBase.tackShooter.Path1LvL2Cost;
+                        case 3: return dataBase.tackShooter.Path1LvL3Cost;
+                        case 4: return dataBase.tackShooter.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -494,10 +534,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.tackShooter.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.tackShooter.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.tackShooter.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.tackShooter.Path2LvL4Cost;
+                        case 1: return dataBase.tackShooter.Path2LvL1Cost;
+                        case 2: return dataBase.tackShooter.Path2LvL2Cost;
+                        case 3: return dataBase.tackShooter.Path2LvL3Cost;
+                        case 4: return dataBase.tackShooter.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -510,10 +550,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.bombShooter.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.bombShooter.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.bombShooter.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.bombShooter.Path1LvL4Cost;
+                        case 1: return dataBase.bombShooter.Path1LvL1Cost;
+                        case 2: return dataBase.bombShooter.Path1LvL2Cost;
+                        case 3: return dataBase.bombShooter.Path1LvL3Cost;
+                        case 4: return dataBase.bombShooter.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -521,10 +561,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.bombShooter.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.bombShooter.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.bombShooter.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.bombShooter.Path2LvL4Cost;
+                        case 1: return dataBase.bombShooter.Path2LvL1Cost;
+                        case 2: return dataBase.bombShooter.Path2LvL2Cost;
+                        case 3: return dataBase.bombShooter.Path2LvL3Cost;
+                        case 4: return dataBase.bombShooter.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -537,10 +577,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.iceTower.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.iceTower.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.iceTower.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.iceTower.Path1LvL4Cost;
+                        case 1: return dataBase.iceTower.Path1LvL1Cost;
+                        case 2: return dataBase.iceTower.Path1LvL2Cost;
+                        case 3: return dataBase.iceTower.Path1LvL3Cost;
+                        case 4: return dataBase.iceTower.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -548,10 +588,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.iceTower.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.iceTower.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.iceTower.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.iceTower.Path2LvL4Cost;
+                        case 1: return dataBase.iceTower.Path2LvL1Cost;
+                        case 2: return dataBase.iceTower.Path2LvL2Cost;
+                        case 3: return dataBase.iceTower.Path2LvL3Cost;
+                        case 4: return dataBase.iceTower.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -564,10 +604,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.glueMonkey.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.glueMonkey.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.glueMonkey.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.glueMonkey.Path1LvL4Cost;
+                        case 1: return dataBase.glueMonkey.Path1LvL1Cost;
+                        case 2: return dataBase.glueMonkey.Path1LvL2Cost;
+                        case 3: return dataBase.glueMonkey.Path1LvL3Cost;
+                        case 4: return dataBase.glueMonkey.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -575,10 +615,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.glueMonkey.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.glueMonkey.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.glueMonkey.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.glueMonkey.Path2LvL4Cost;
+                        case 1: return dataBase.glueMonkey.Path2LvL1Cost;
+                        case 2: return dataBase.glueMonkey.Path2LvL2Cost;
+                        case 3: return dataBase.glueMonkey.Path2LvL3Cost;
+                        case 4: return dataBase.glueMonkey.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -591,10 +631,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.monkeyBuccaneer.Path1LvL4Cost;
+                        case 1: return dataBase.monkeyBuccaneer.Path1LvL1Cost;
+                        case 2: return dataBase.monkeyBuccaneer.Path1LvL2Cost;
+                        case 3: return dataBase.monkeyBuccaneer.Path1LvL3Cost;
+                        case 4: return dataBase.monkeyBuccaneer.Path1LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -602,10 +642,10 @@ public class UIMenager : MonoBehaviour
                 {
                     switch (Lv)
                     {
-                        case 1: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL1Cost;
-                        case 2: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL2Cost;
-                        case 3: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL3Cost;
-                        case 4: return GameBox.instance.dataBase.monkeyBuccaneer.Path2LvL4Cost;
+                        case 1: return dataBase.monkeyBuccaneer.Path2LvL1Cost;
+                        case 2: return dataBase.monkeyBuccaneer.Path2LvL2Cost;
+                        case 3: return dataBase.monkeyBuccaneer.Path2LvL3Cost;
+                        case 4: return dataBase.monkeyBuccaneer.Path2LvL4Cost;
                         default: return -1;
                     }
                 }
@@ -623,17 +663,17 @@ public class UIMenager : MonoBehaviour
         switch (towerType)
         {
             case TowerTypes.DartMonkey:
-                return GameBox.instance.dataBase.towerBuyCost.dartMonkey;
+                return dataBase.towerBuyCost.dartMonkey;
             case TowerTypes.TackShooter:
-                return GameBox.instance.dataBase.towerBuyCost.tackShooter;
+                return dataBase.towerBuyCost.tackShooter;
             case TowerTypes.BombShooter:
-                return GameBox.instance.dataBase.towerBuyCost.bombShooter;
+                return dataBase.towerBuyCost.bombShooter;
             case TowerTypes.IceTower:
-                return GameBox.instance.dataBase.towerBuyCost.iceTower;
+                return dataBase.towerBuyCost.iceTower;
             case TowerTypes.GlueMonkey:
-                return GameBox.instance.dataBase.towerBuyCost.glueMonkey;
+                return dataBase.towerBuyCost.glueMonkey;
             case TowerTypes.MonkeyBuccaneer:
-                return GameBox.instance.dataBase.towerBuyCost.monkeyBuccaneer;
+                return dataBase.towerBuyCost.monkeyBuccaneer;
             default:
                 return -1;
         }

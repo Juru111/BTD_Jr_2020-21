@@ -169,32 +169,20 @@ MonoBehaviour:
     <iceTower>k__BackingField: 300
     <glueMonkey>k__BackingField: 270
     <monkeyBuccaneer>k__BackingField: 500
-  round:
-  - piece: []
-    rbeInfo: 
-  - piece:
+  rounds:
+  - pieces: []
+    rbeInfo: Round 0
+  - pieces:
     - bloonName: 1
       isCammo: 0
       count: 20
       bloonSpaceing: 2
       pieceSpaceing: 0
-    rbeInfo: 
-  - piece:
+    rbeInfo: 20
+  - pieces:
     - bloonName: 1
       isCammo: 0
       count: 30
       bloonSpaceing: 1
       pieceSpaceing: 0
-    rbeInfo: 
-  - piece:
-    - bloonName: 1
-      isCammo: 0
-      count: 5
-      bloonSpaceing: 1
-      pieceSpaceing: 5
-    - bloonName: 2
-      isCammo: 0
-      count: 5
-      bloonSpaceing: 2
-      pieceSpaceing: 0
-    rbeInfo: 
+    rbeInfo: 30

@@ -7,39 +7,66 @@ public class WavesMenager : MonoBehaviour
     private List<GameObject> emptyList;
     private Vector3 startPoint;
     [SerializeField]
-    private int currRound = 0;
+    private int currRound = 1;
+    private int maxRound;
+    [SerializeField]
+    private BloonDetector bloonDetector;
 
     private void Start()
     {
         startPoint = GameBox.instance.waypoints[0].position;
         emptyList = new List<GameObject>();
+        maxRound = GameBox.instance.dataBase.rounds.Count - 1;
         //robocze spawnowanie balonów
         //StartCoroutine(WIPSpawning());
     }
 
     public void DoNextRound()
     {
-        currRound++;
         StartCoroutine(DoRound(currRound));
     }
 
     private IEnumerator DoRound(int roundIndex)
     {
-        GameBox.instance.uIMenager.StartNextRoundOnUI(currRound);
-        int pieceCount = GameBox.instance.dataBase.round[roundIndex].piece.Count;
+        GameBox.instance.uIMenager.StartNextRoundOnUI();
+        int pieceCount = GameBox.instance.dataBase.rounds[roundIndex].pieces.Count;
         for (int i = 0; i < pieceCount; i++)
         {
-            var currPiece = GameBox.instance.dataBase.round[roundIndex].piece[i];
-            Debug.Log(currPiece.count);
+            var currPiece = GameBox.instance.dataBase.rounds[roundIndex].pieces[i];
 
             for (int j = 0; j < currPiece.count; j++)
             {
                 GameBox.instance.poolingMenager.SummonBloon(currPiece.bloonName, (int)currPiece.bloonName % 100, startPoint, 0, 0, currPiece.isCammo, 0, emptyList);
-                yield return new WaitForSeconds(currPiece.bloonSpaceing/2/GiveBloonSpeed(currPiece.bloonName));
+                yield return new WaitForSeconds(currPiece.bloonSpaceing / 2 / GiveBloonSpeed(currPiece.bloonName));
             }
-            yield return new WaitForSeconds(currPiece.pieceSpaceing/2 / GiveBloonSpeed(currPiece.bloonName));
+            yield return new WaitForSeconds(currPiece.pieceSpaceing / 2 / GiveBloonSpeed(currPiece.bloonName));
         }
-        GameBox.instance.uIMenager.FinishRoundOnUI();
+        StartCoroutine(TryEndRound());
+    }
+
+    //private void TryEndRound(int roundIndex)
+    //{
+    //    bloonDetectorObject.SetActive(true);
+    //    while(isAnyBloonAlife == false)
+    //    { }
+    //    GameBox.instance.uIMenager.FinishRoundOnUI(currRound, GameBox.instance.dataBase.rounds[roundIndex + 1].rbeInfo);
+    //    bloonDetectorObject.SetActive(false);
+    //}
+
+    IEnumerator TryEndRound()
+    {
+        yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
+
+        if (currRound < maxRound)
+        {
+            currRound++;
+            GameBox.instance.uIMenager.FinishRoundOnUI(currRound, GameBox.instance.dataBase.rounds[currRound].rbeInfo);
+            Debug.Log("Ended round " + (currRound - 1) + " Round to start " + currRound);
+        }
+        else
+        {
+            GameBox.instance.uIMenager.ShowWin();
+        }
     }
 
     //przenieść dane do DataBase-u, dać odnośniki
