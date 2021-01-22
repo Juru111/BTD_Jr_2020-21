@@ -8,6 +8,10 @@ public class ImputMenager : MonoBehaviour
     private Camera mainCamera;
     [SerializeField]
     private LayerMask clickableLayerMask;
+    [SerializeField]
+    private MessageWindow messageWindow;
+    [SerializeField]
+    private UIMenager uIMenager;
     private IClickable lastclicedObject;
 
     // Update is called once per frame
@@ -17,7 +21,25 @@ public class ImputMenager : MonoBehaviour
         {
             HandleLeftMouseButtonClicked();
         }
-        //Debug.Log(Input.mousePosition);
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (messageWindow.currWindow != WindowTypes.NONE)
+            {
+                messageWindow.HandleBackButton();
+            }
+            else
+            {
+                messageWindow.OpenWindow(WindowTypes.Leave, 0);
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.G))
+        { 
+            uIMenager.ChangeMoneyBalance(1000); 
+        }
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            uIMenager.ChangeMoneyBalance(-1000); 
+        }
     }
 
     private void HandleLeftMouseButtonClicked()

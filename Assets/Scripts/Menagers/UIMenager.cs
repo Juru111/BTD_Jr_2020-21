@@ -16,6 +16,7 @@ public class UIMenager : MonoBehaviour
     private TMP_Text hpDisplay;
     [SerializeField]
     private int hpCount;
+    private bool isLostWindowShowed = false;
 
     //Start button
     [Space]
@@ -35,6 +36,7 @@ public class UIMenager : MonoBehaviour
     [SerializeField]
     private TMP_Text maxRoundCount;
     private int maxRound;
+    private int lastFinishedRound = 0;
 
     //uleprzenia
     [Space]
@@ -76,7 +78,14 @@ public class UIMenager : MonoBehaviour
     //private Image ToBuy;
     //}
 
+    [Space]
     private DataBase dataBase;
+    [SerializeField]
+    private MessageWindow messageWindow;
+    StringBuilder sb = new StringBuilder();
+
+
+    //TODO: Nauczyć się segregować kod i go tu posegregować O.o
 
 
     void Awake()
@@ -100,26 +109,20 @@ public class UIMenager : MonoBehaviour
         roundRbeInfo.text = GameBox.instance.dataBase.rounds[1].rbeInfo;
     }
 
-
-    private void Update()
-    {
-        //dev tool
-        if(Input.GetKeyDown("g"))
-        { ChangeMoneyBalance(1000); }
-        if (Input.GetKeyDown("f"))
-        { ChangeMoneyBalance(-1000); }
-    }
-
     public void LoseHp(int hpLost)
     {
         hpCount -= hpLost;
         if (hpCount <= 0)
         {
-            //lose Popup
-            Debug.Log("END!");
             hpCount = 0;
+            if(isLostWindowShowed == false)
+            {
+                isLostWindowShowed = true;
+                DoLose(lastFinishedRound);
+            }
         }
         RefreshHpDispaly();
+
     }
     
     public bool TryBuy(int price)
@@ -168,8 +171,6 @@ public class UIMenager : MonoBehaviour
 
     private void RefreshUpgradePanel(Tower _tower)
     {
-        StringBuilder sb = new StringBuilder();
-
         sb.AppendFormat("{0} upgrades", GiveTowerName(_tower.towerName));
         towerNameText.text = sb.ToString();
         sb.Clear();
@@ -294,26 +295,48 @@ public class UIMenager : MonoBehaviour
 
     public void FinishRoundOnUI(int nextRoundIndex, string nextRoundRbeInfo)
     {
-        RoundReward();
+        if (hpCount > 0)
+        {
+            RoundReward();
 
-        startButton.interactable = true;
-        startButtonText.text = "Start\nRound";
-        roundCount.text = nextRoundIndex.ToString();
-        roundRbeInfo.text = nextRoundRbeInfo;
+            startButton.interactable = true;
+            startButtonText.text = "Start\nRound";
+            lastFinishedRound = nextRoundIndex - 1;
+            roundCount.text = nextRoundIndex.ToString();
+            roundRbeInfo.text = nextRoundRbeInfo;
+        }
     }
 
-    public void ShowWin()
+    public void DoWin()
     {
         RoundReward();
-
-        Debug.Log("WinPop-up");
         startButtonText.text = "Goal\nAchieved";
+        messageWindow.OpenWindow(WindowTypes.Win, 0);
+    }
+
+    private void DoLose(int lastFinishedRound)
+    {
+        startButton.interactable = false;
+        sb.AppendFormat("Reached\nRound {0}", lastFinishedRound);
+        startButtonText.text = sb.ToString();
+        sb.Clear();
+        messageWindow.OpenWindow(WindowTypes.Lose, lastFinishedRound);
     }
 
     private void RoundReward()
     {
         ChangeMoneyBalance(roundReward);
         roundReward++;
+    }
+
+    public void HandleLeaveButtonPress()
+    {
+        messageWindow.OpenWindow(WindowTypes.Leave, 0);
+    }
+
+    public void HandleSettingsButtonPress()
+    {
+        messageWindow.OpenWindow(WindowTypes.Settings, 0);
     }
 
     private Sprite GiveUpgradeIcon(TowerTypes towerType, int path, int Lv)

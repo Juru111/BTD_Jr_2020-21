@@ -5,6 +5,7 @@ using UnityEngine;
 public class WavesMenager : MonoBehaviour
 {
     private List<GameObject> emptyList;
+
     private Vector3 startPoint;
     [SerializeField]
     private int currRound = 1;
@@ -17,8 +18,6 @@ public class WavesMenager : MonoBehaviour
         startPoint = GameBox.instance.waypoints[0].position;
         emptyList = new List<GameObject>();
         maxRound = GameBox.instance.dataBase.rounds.Count - 1;
-        //robocze spawnowanie balonów
-        //StartCoroutine(WIPSpawning());
     }
 
     public void DoNextRound()
@@ -44,17 +43,12 @@ public class WavesMenager : MonoBehaviour
         StartCoroutine(TryEndRound());
     }
 
-    //private void TryEndRound(int roundIndex)
-    //{
-    //    bloonDetectorObject.SetActive(true);
-    //    while(isAnyBloonAlife == false)
-    //    { }
-    //    GameBox.instance.uIMenager.FinishRoundOnUI(currRound, GameBox.instance.dataBase.rounds[roundIndex + 1].rbeInfo);
-    //    bloonDetectorObject.SetActive(false);
-    //}
-
     IEnumerator TryEndRound()
     {
+        yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
+        yield return null;
+        yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
+        yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
 
         if (currRound < maxRound)
@@ -65,7 +59,7 @@ public class WavesMenager : MonoBehaviour
         }
         else
         {
-            GameBox.instance.uIMenager.ShowWin();
+            GameBox.instance.uIMenager.DoWin();
         }
     }
 
@@ -88,35 +82,6 @@ public class WavesMenager : MonoBehaviour
             case BloonTypes.MOAB: return 1f;
             default: return 0;
         }
-    }
-
-    IEnumerator WIPSpawning()
-    {
-        for (int i = 1; i < 10; i++)
-        {
-            for (int j = 0; j < 5; j++)
-            {
-                BloonTypes bloonType = (BloonTypes)i;
-                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, true, 0, emptyList);
-                yield return new WaitForSeconds(0.5f);
-            }
-            yield return new WaitForSeconds(0.5f);
-            for (int j = 0; j < 5; j++)
-            {
-                BloonTypes bloonType = (BloonTypes)i;
-                GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, 0, emptyList);
-                yield return new WaitForSeconds(0.5f);
-            }
-            yield return new WaitForSeconds(1);
-        }
-        yield return new WaitForSeconds(10);
-        for (int i = 1; i < 100; i++)
-        {
-            BloonTypes bloonType = (BloonTypes)Random.Range(1, 10);
-            GameBox.instance.poolingMenager.SummonBloon(bloonType, (int)bloonType % 100, startPoint, 0, 0, false, 0, emptyList);
-            yield return new WaitForSeconds(0.2f);
-        }
-
     }
 
 }

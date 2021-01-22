@@ -44,16 +44,19 @@ public class DragBuy : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (uIMenager.TryBuy(myCost))
+        if (Input.mousePosition.x < 836 && Input.mousePosition.y > 100)
         {
-            positionToSpawn = transform.position;
-            positionToSpawn.z = 0;
-            Instantiate(towerPrefab, positionToSpawn, Quaternion.identity, towerAnchor.transform);
-            
-        }
-        else
-        {
-            //NotEnoughMoney Popup
+            if (uIMenager.TryBuy(myCost))
+            {
+                positionToSpawn = transform.position;
+                positionToSpawn.z = 0;
+                Instantiate(towerPrefab, positionToSpawn, Quaternion.identity, towerAnchor.transform);
+
+            }
+            else
+            {
+                //NotEnoughMoney Popup
+            }
         }
         myRectTransform.anchoredPosition = Vector2.zero;
         towerBlueprint.SetActive(false);

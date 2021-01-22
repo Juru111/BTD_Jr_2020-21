@@ -107,7 +107,12 @@ public class PoolingMenager : MonoBehaviour
 
             if(bloonToSummon.TryGetComponent<Bloon>(out Bloon bloonComponent))
             {
-                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, parentPopProjectles);
+                var newParentPopProjectles = new List<GameObject>();
+                foreach (var item in parentPopProjectles)
+                {
+                    newParentPopProjectles.Add(item);
+                }
+                bloonComponent.SetMe(bloonName, layersLeft, position, myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, newParentPopProjectles);
             }
             else
             { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }
@@ -141,7 +146,7 @@ public class PoolingMenager : MonoBehaviour
             else
             { Debug.LogError(bloonToSummon + " nie posiada komponentu Bloon!"); }
         }
-
+        
     }
 
     public void SummonProjectile(ProjectileTypes projectileName, Vector3 position, int pierce, int power,

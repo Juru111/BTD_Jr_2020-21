@@ -20,6 +20,6 @@ public class BloonDetector : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(bloonInRange);
+        //Debug.Log(bloonInRange);
     }
 }

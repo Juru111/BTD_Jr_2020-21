@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: -4074144699710655017
     second: woodUI1horizontal_2
+  - first:
+      213: 533305851348165304
+    second: InfoPanel1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -145,7 +148,7 @@ TextureImporter:
         width: 308
         height: 161
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +156,27 @@ TextureImporter:
       bones: []
       spriteID: 7d5b43a3bfab577c0800000000000000
       internalID: -4074144699710655017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InfoPanel1
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 126
+        width: 580
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2ae32a8dea66700800000000000000
+      internalID: 533305851348165304
       vertices: []
       indices: 
       edges: []

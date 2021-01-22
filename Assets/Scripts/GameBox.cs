@@ -27,4 +27,10 @@ public class GameBox : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //potrzebne dla roboczego restartu gry z MessageWindow
+    public void SetInstanceToNull()
+    {
+        instance = null;
+    }
 }

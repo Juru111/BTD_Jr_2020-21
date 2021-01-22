@@ -109,6 +109,7 @@ public class Bloon : MonoBehaviour
         isCammo = _isCammo;
         cammoSpriteObject.SetActive(isCammo);
         parentPopProjectles = _parentPopProjectles;
+        Debug.Log(_parentPopProjectles.Count);
         stunDurationLeft = _stunDurationLeft;
         movementSpeed = baseMovementSpeed;
         neverLayerPoped = true;
@@ -137,7 +138,6 @@ public class Bloon : MonoBehaviour
                 parentPopProjectles.Add(parentPopProjectle);
                 GameBox.instance.poolingMenager.SummonBloon(newBloonName, layersLeft - power, transform.position,
                                                             myNextWaypoint, distanceToWaypoint, isCammo, stunDurationLeft, parentPopProjectles);
-                
             }
             else
             {
