@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "DataBase", menuName = "MojeScriptables/DataBase")]
 public class DataBase : ScriptableObject
 {
+
     //koszty oraz ilony uleprzeń małp
     #region LevelUps
     [System.Serializable]

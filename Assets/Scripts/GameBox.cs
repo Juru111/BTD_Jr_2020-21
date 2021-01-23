@@ -7,6 +7,7 @@ public class GameBox : MonoBehaviour
     public DataBase dataBase;
     public PoolingMenager poolingMenager;
     public UIMenager uIMenager;
+    public SoundMenager soundMenager;
     public static GameBox instance;
 
     //spis waypointów
@@ -20,7 +21,7 @@ public class GameBox : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -28,9 +29,4 @@ public class GameBox : MonoBehaviour
         }
     }
 
-    //potrzebne dla roboczego restartu gry z MessageWindow
-    public void SetInstanceToNull()
-    {
-        instance = null;
-    }
 }

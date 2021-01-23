@@ -131,7 +131,7 @@ public class Bloon : MonoBehaviour
         {
             neverLayerPoped = false;
             GameBox.instance.poolingMenager.SummonPop(transform.position);
-
+            GameBox.instance.soundMenager.PlaySound(GivePopSound());
             if (bloonName != BloonTypes.Red)
             {
                 BloonTypes newBloonName = (BloonTypes)((float)bloonName % 100 - 1);
@@ -147,6 +147,11 @@ public class Bloon : MonoBehaviour
             uiMenaner.ChangeMoneyBalance(1);
             GameBox.instance.poolingMenager.ReturnBloon(gameObject, bloonName);
         }
+    }
+
+    protected virtual SoundTypes GivePopSound()
+    {
+        return (SoundTypes)Random.Range(1, 4);
     }
 
     public virtual void StunMe(float _duration)

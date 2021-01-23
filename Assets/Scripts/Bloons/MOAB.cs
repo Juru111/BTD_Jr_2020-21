@@ -14,6 +14,7 @@ public class MOAB : Bloon
             healthPointsLeft -= power;
             parentPopProjectles.Add(_parentPopProjectle);
             GameBox.instance.poolingMenager.SummonPop(transform.position);
+            GameBox.instance.soundMenager.PlaySound(GivePopSound());
         }
         else
         {
@@ -37,5 +38,8 @@ public class MOAB : Bloon
     //    transform.rotation = Quaternion.AngleAxis(spriteRotationAngle - 90, Vector3.forward);
     //}
 
-
+    protected override SoundTypes GivePopSound()
+    {
+        return (SoundTypes)Random.Range(5, 7);
+    }
 }

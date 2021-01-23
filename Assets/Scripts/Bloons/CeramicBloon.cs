@@ -34,6 +34,7 @@ public class CeramicBloon : DoubleBloon
                 healthPointsLeft -= power;
                 parentPopProjectles.Add(_parentPopProjectle);
                 GameBox.instance.poolingMenager.SummonPop(transform.position);
+                GameBox.instance.soundMenager.PlaySound(SoundTypes.CeramicHit);
             }
             else
             {
@@ -63,5 +64,10 @@ public class CeramicBloon : DoubleBloon
             default:
                 break;
         }
+    }
+
+    protected override SoundTypes GivePopSound()
+    {
+        return SoundTypes.CeramicHit;
     }
 }

@@ -9,6 +9,7 @@ public class Dart : Projectile
         if (bloonComponent.bloonName == BloonTypes.Lead)
         {
             GameBox.instance.poolingMenager.ReturnProjectile(gameObject, projectileName);
+            GameBox.instance.soundMenager.PlaySound(SoundTypes.MetalHit);
         }
         else
         {

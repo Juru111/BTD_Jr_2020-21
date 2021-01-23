@@ -124,6 +124,11 @@ public class MessageWindow : MonoBehaviour
 
     private void CloseWindow()
     {
+        if (currWindow == WindowTypes.Settings)
+        {
+            PlayerPrefs.SetFloat("MusicVolume", GameBox.instance.soundMenager.GiveMusicVolume());
+            PlayerPrefs.SetFloat("SfxVolume", GameBox.instance.soundMenager.GiveSfxVolume());
+        }
         blackOut.enabled = false;
         window.SetActive(false);
         currWindow = WindowTypes.NONE;
@@ -158,7 +163,6 @@ public class MessageWindow : MonoBehaviour
     private void DoResetGame()
     {
         //fajnie było by ogarnąć wszystkie parametry do początkowych w przyszłości
-        gameBox.SetInstanceToNull(); // to dla poprawnego załadawania nowej sceny
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
