@@ -45,9 +45,11 @@ public class WavesMenager : MonoBehaviour
 
     IEnumerator TryEndRound()
     {
-        yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
-        yield return null;
-        yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
+            yield return null;
+        }
         yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => bloonDetector.bloonInRange == false);
 

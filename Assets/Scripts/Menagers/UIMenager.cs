@@ -317,7 +317,7 @@ public class UIMenager : MonoBehaviour
     private void DoLose(int lastFinishedRound)
     {
         startButton.interactable = false;
-        sb.AppendFormat("Reached\nRound {0}", lastFinishedRound);
+        sb.AppendFormat("Game ended");
         startButtonText.text = sb.ToString();
         sb.Clear();
         messageWindow.OpenWindow(WindowTypes.Lose, lastFinishedRound);

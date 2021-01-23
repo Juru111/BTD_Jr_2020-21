@@ -43,7 +43,7 @@ public class MessageWindow : MonoBehaviour
     private string GiveLoseContent(int roundReached)
     {
         sb.Clear();
-        sb.AppendFormat("You made it to Round {0}.\nCan you beat it next time, chief?", roundReached);
+        sb.AppendFormat("You survived {0} Rounds.\nCan you beat it next time, chief?", roundReached);
         return sb.ToString();
     }
     private static string winT = "Total victory!";
